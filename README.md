@@ -21,6 +21,7 @@ Public Code notebooks:
 - [One coefficient, three RMSE optima](https://www.kaggle.com/code/muelsyse111/rogii-one-coefficient-three-rmse-optima)
 - [Typewell GR motif ambiguity atlas](https://www.kaggle.com/code/muelsyse111/rogii-typewell-gr-motif-ambiguity-atlas)
 - [Boundary geometry and score concentration](https://www.kaggle.com/code/muelsyse111/rogii-boundary-geometry-score-concentration)
+- [Prefix-only GR calibration audit](https://www.kaggle.com/code/muelsyse111/rogii-prefix-only-gr-calibration-audit)
 
 ROGII 前期调研与实验仓库。比赛目标是根据水平井轨迹、Gamma Ray 日志和对应 typewell，预测评估区间每一英尺的 `TVT`；官方指标是逐行 pooled RMSE，越低越好。
 

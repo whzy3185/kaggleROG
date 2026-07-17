@@ -22,6 +22,7 @@
 - Public idea notebook: `muelsyse111/rogii-one-coefficient-three-rmse-optima`.
 - Public idea notebook: `muelsyse111/rogii-typewell-gr-motif-ambiguity-atlas`.
 - Public idea notebook: `muelsyse111/rogii-boundary-geometry-score-concentration`.
+- Public idea notebook: `muelsyse111/rogii-prefix-only-gr-calibration-audit`.
 - Failed private DWT reproductions were not submitted. The current artifact dataset does not contain the `models.pkl` filenames expected by the pulled public notebook.
 
 ## Strongest local candidate
