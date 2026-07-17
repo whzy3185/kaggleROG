@@ -4,8 +4,10 @@
 
 - Public notebook: [ROGII Honest 773 Well Baseline Audit](https://www.kaggle.com/code/muelsyse111/rogii-honest-773-well-baseline-audit)
 - Full 773-well true-start CV: `15.9099`; public LB: `15.883`
-- Daily submissions used: `1 / 5`; locally resolved micro-improvements are not submitted
-- Independent full 773-well particle blend: `13.1167` versus anchor `15.9099`; five-fold OOF learned-weight RMSE `13.1544`; cross-seed confirmation remains
+- Daily submissions used: `2 / 5`; locally resolved weight variants are not submitted
+- Particle blend public LB: `12.774` versus anchor `15.883`
+- Full 773-well fixed blend on original / disjoint seed sets: `13.1119 / 13.3505`; OOF learned-weight RMSE `13.1544 / 13.3577`
+- Private audited submission notebook: [ROGII Private Safe Particle Anchor Blend](https://www.kaggle.com/code/muelsyse111/rogii-private-safe-particle-anchor-blend)
 - Detailed evidence: [Results log](docs/RESULTS_2026-07-17.md)
 - English post ready for Discussion: [Discussion draft](docs/DISCUSSION_DRAFT_HONEST_BASELINE.md)
 

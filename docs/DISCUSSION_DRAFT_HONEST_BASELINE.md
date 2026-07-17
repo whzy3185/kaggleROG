@@ -45,10 +45,14 @@ This is deliberately more defensive than concatenating files in filesystem order
 
 1. A standalone fixed or linearly extrapolated `U = TVT + Z` surface was much worse than the anchor. The best tested U-tail candidate had pooled RMSE 42.25; U-hold was 107.49. U may still be the right dynamic state inside PF/HMM, but it is not sufficient by itself here.
 2. A compact first-order TVT HMM won only one of five smoke-test wells and scored 26.50 versus the anchor's 10.31. I stopped it before leaderboard use.
-3. Naive early-prefix multi-cut calibration can be optimistic. Cuts at 40/60/80% of the visible prefix strongly preferred larger trend coefficients, but extending them through the real suffix worsened pooled RMSE to 17.04. Synthetic cuts need to match the actual boundary regime; “more cuts” is not automatically “more honest.”
+3. Naive early-prefix multi-cut calibration can be optimistic. Cuts at 40/60/80% of the visible prefix strongly preferred larger trend coefficients, but extending them through the real suffix worsened pooled RMSE to 17.04. Synthetic cuts need to match the actual boundary regime; "more cuts" is not automatically "more honest."
 
-## Current next step
+## Particle follow-up
 
-An independently implemented multi-seed particle tracker using the structural state `U`, typewell GR likelihood, and visible-prefix calibration has now been tested at the true start on all 773 wells. A fixed 65% particle blend improved pooled RMSE from 15.9099 to 13.1167 and p95 from 29.01 to 25.16. Five-fold out-of-well blend estimation scored 13.1544. Seed-weight collapse still creates wrong-branch wells, so I am not submitting it until one full cross-seed replication is complete.
+An independently implemented multi-seed particle tracker using the structural state `U`, typewell GR likelihood, and visible-prefix calibration has now been tested at the true start on all 773 wells. A fixed 62.5% particle blend improved pooled RMSE from 15.9099 to 13.1119, and five-fold out-of-well blend estimation scored 13.1544.
+
+I also found and corrected an experimental bookkeeping trap: advancing an eight-seed ensemble base by one changes only one seed, so it is not an independent replication. A genuinely disjoint seed set scored 13.3505 for the same fixed blend, with OOF RMSE 13.3577. Its p95 improved from the anchor's 29.01 to 25.44, although the worst well remained 70.54. This is a useful reminder to report the actual seed sets, not only different base labels.
+
+The fixed model scored 12.774 on the public leaderboard versus 15.883 for the anchor. I am not using submissions to search nearby blend weights: the original/disjoint joint optimum is 0.611, and fixed 0.625 differs by only 0.0015 RMSE on their combined local evidence. The remaining problem is stochastic wrong-branch tail risk, not another decimal place in the global blend.
 
 I would be interested in comparisons that report true-start pooled RMSE plus p95/worst-well error, especially for PF, beam, DTW, and exact HMM variants. Please also state whether any per-well gate uses only the visible prefix.
