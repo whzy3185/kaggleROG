@@ -1,5 +1,21 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current validated status (2026-07-17)
+
+- Public notebook: [ROGII Honest 773 Well Baseline Audit](https://www.kaggle.com/code/muelsyse111/rogii-honest-773-well-baseline-audit)
+- Full 773-well true-start CV: `15.9099`; public LB: `15.883`
+- Daily submissions used: `1 / 5`; locally resolved micro-improvements are not submitted
+- Independent full 773-well particle blend: `13.1167` versus anchor `15.9099`; five-fold OOF learned-weight RMSE `13.1544`; cross-seed confirmation remains
+- Detailed evidence: [Results log](docs/RESULTS_2026-07-17.md)
+- English post ready for Discussion: [Discussion draft](docs/DISCUSSION_DRAFT_HONEST_BASELINE.md)
+
+Public Code notebooks:
+
+- [Honest 773-well baseline and submission audit](https://www.kaggle.com/code/muelsyse111/rogii-honest-773-well-baseline-audit)
+- [Prefix backtest trap: more cuts can hurt](https://www.kaggle.com/code/muelsyse111/rogii-prefix-backtest-trap-more-cuts-can-hurt)
+- [Particle filter lab: anchor blending](https://www.kaggle.com/code/muelsyse111/rogii-particle-filter-lab-anchor-blending)
+- [True-start failure atlas and tail risk](https://www.kaggle.com/code/muelsyse111/rogii-true-start-failure-atlas-tail-risk)
+
 ROGII 前期调研与实验仓库。比赛目标是根据水平井轨迹、Gamma Ray 日志和对应 typewell，预测评估区间每一英尺的 `TVT`；官方指标是逐行 pooled RMSE，越低越好。
 
 - Competition: [ROGII - Wellbore Geology Prediction](https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction)
