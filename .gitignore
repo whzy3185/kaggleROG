@@ -1,0 +1,27 @@
+# Competition data is restricted to competition use and must not be published.
+data/raw/
+data/processed/
+data/cache/
+*.pptx
+
+# Generated artifacts and submissions.
+artifacts/
+models/
+outputs/
+submission.csv
+submission_*.csv
+*.pkl
+*.joblib
+
+# Python and notebook noise.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local credentials.
+.env
+*.token
+kaggle.json

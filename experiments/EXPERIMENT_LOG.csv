@@ -1,0 +1,9 @@
+experiment_id,status,hypothesis,validation,primary_metric,notes
+E000,planned,"Anchor hold is a strong safe baseline","GroupKFold by well + true-start replay",pooled_rmse,"Also report macro and worst-well RMSE"
+E001,planned,"U=TVT+Z prefix trend beats direct TVT trend","Multi-cut prefix backtest",pooled_rmse,"Linear and robust quadratic with slope shrinkage"
+E002,planned,"Well-group residual Ridge/GBM beats row-wise absolute regression","GroupKFold by well",pooled_rmse,"Target anchor residual or U residual"
+E003,planned,"Affine-calibrated multi-scale NCC/DTW adds GR alignment signal","Multi-cut by well",pooled_rmse,"Compare typewell and lateral-prefix reference"
+E004,planned,"Second-order PF/beam improves long and high-Z-span wells","Multi-cut by well",pooled_rmse,"Track wrong-branch rate and runtime"
+E005,planned,"HMM posterior mean/std complements PF","Multi-cut by well",pooled_rmse,"Measure error correlation and uncertainty calibration"
+E006,planned,"Neighbor profile transfer helps only close same-group wells","Spatially separated group CV",pooled_rmse,"Gate by distance and typewell hash"
+E007,planned,"Prefix-gated dual pipeline blend reduces tail error","Nested multi-cut validation",pooled_rmse,"No public-LB weight tuning"
