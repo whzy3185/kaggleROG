@@ -18,6 +18,10 @@
 - Public idea notebook: `muelsyse111/rogii-prefix-backtest-trap-more-cuts-can-hurt`.
 - Public idea notebook: `muelsyse111/rogii-particle-filter-lab-anchor-blending`.
 - Public idea notebook: `muelsyse111/rogii-true-start-failure-atlas-tail-risk`.
+- Public idea notebook: `muelsyse111/rogii-particle-seed-independence-audit`.
+- Public idea notebook: `muelsyse111/rogii-one-coefficient-three-rmse-optima`.
+- Public idea notebook: `muelsyse111/rogii-typewell-gr-motif-ambiguity-atlas`.
+- Public idea notebook: `muelsyse111/rogii-boundary-geometry-score-concentration`.
 - Failed private DWT reproductions were not submitted. The current artifact dataset does not contain the `models.pkl` filenames expected by the pulled public notebook.
 
 ## Strongest local candidate

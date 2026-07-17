@@ -1,0 +1,16 @@
+{
+  "id": "muelsyse111/rogii-one-coefficient-three-rmse-optima",
+  "title": "ROGII One Coefficient Three RMSE Optima",
+  "code_file": "rogii-one-coefficient-three-rmse-optima.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": ["rogii-wellbore-geology-prediction"],
+  "model_sources": []
+}
