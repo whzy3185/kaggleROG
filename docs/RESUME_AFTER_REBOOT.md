@@ -1,6 +1,39 @@
 # Resume checkpoint — 2026-07-17
 
-## Safe state
+## Latest safe checkpoint — 2026-07-18
+
+- Today's competition budget is exhausted: exactly `5 / 5` submissions, with
+  no sixth submission allowed.
+- Pending score refs: `54808956`, `54808958`, `54809311`, `54809350`,
+  `54809629`.
+- All five source notebooks completed privately before submission.
+- All five `submission.csv` files passed exact 14,151-row sample ID order,
+  finite-value, log, and SHA-256 audits.
+- Full 773-well 16-seed particle audit completed: best fixed candidate is the
+  65% particle blend at `12.7989` pooled RMSE; it was not submitted.
+- Kaggle research notebooks `rogii-five-submission-agent-playbook`,
+  `rogii-public-route-distance-atlas`, and
+  `rogii-public-artifact-lineage-checklist` completed private CPU smoke runs.
+- The five score-bearing reproduction notebooks and three new research
+  notebooks remain private until the real scores are written into their English
+  descriptions.
+- Unit tests: 14 passing.
+- A score-polling process may still be active. If not, rerun the submissions
+  command below. Do not submit again.
+
+## Exact next actions after restart
+
+1. Poll the five refs until all are `COMPLETE`.
+2. Replace score/reference placeholders in the five reproduction notebooks,
+   three research notebooks, result log, experiment ledger, and Discussion
+   draft.
+3. Change notebook metadata to public and push documentation versions only.
+   Never submit those later versions.
+4. Update README, run the 14-test suite, commit, and push GitHub.
+5. Publish the English Discussion only after it links to the completed public
+   Agent Playbook.
+
+## Previous safe state — 2026-07-17
 
 - All local processes for experiments have finished.
 - Competition data is fully downloaded and extracted under ignored `data/raw/competition/`.

@@ -1,5 +1,23 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current validated status (2026-07-18)
+
+- Daily competition submissions: exactly `5 / 5`; no further submission.
+- Score-bearing public-source reproductions:
+  - [Public rebuild](https://www.kaggle.com/code/muelsyse111/rogii-d18-public-rebuild-7295): `SCORE_1` (`54808956`)
+  - [Dual track](https://www.kaggle.com/code/muelsyse111/rogii-d18-dual-track-calibrated): `SCORE_2` (`54808958`)
+  - [A04 residual transfer](https://www.kaggle.com/code/muelsyse111/rogii-d18-a04-residual-transfer-repro): `SCORE_3` (`54809311`)
+  - [G040/S12](https://www.kaggle.com/code/muelsyse111/rogii-d18-anchor-g040-s12-repro): `SCORE_4` (`54809350`)
+  - [Safe rebuild](https://www.kaggle.com/code/muelsyse111/rogii-d18-safe-rebuild-7016-repro): `SCORE_5` (`54809629`)
+- New public research notebooks:
+  - [Five-Submission Agent Playbook](https://www.kaggle.com/code/muelsyse111/rogii-five-submission-agent-playbook)
+  - [Public Route Distance Atlas](https://www.kaggle.com/code/muelsyse111/rogii-public-route-distance-atlas)
+  - [Public Artifact Lineage Checklist](https://www.kaggle.com/code/muelsyse111/rogii-public-artifact-lineage-checklist)
+- Independent full 773-well particle audit: 65% particle blend RMSE `12.7989`;
+  retained as a local floor and not submitted.
+- Detailed evidence: [2026-07-18 results](docs/RESULTS_2026-07-18.md)
+- Agent-ready research queue: [Agent playbook](research/AGENT_PLAYBOOK_2026-07-18.md)
+
 ## Current validated status (2026-07-17)
 
 - Public notebook: [ROGII Honest 773 Well Baseline Audit](https://www.kaggle.com/code/muelsyse111/rogii-honest-773-well-baseline-audit)

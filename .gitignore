@@ -13,6 +13,11 @@ submission_*.csv
 *.pkl
 *.joblib
 
+# Temporary source pulls used for Kaggle-native public reproduction. Keep the
+# attribution/audit notes in Git, but do not mirror third-party notebook source
+# into this repository without an explicit compatible license.
+research/pulled_*/
+
 # Python and notebook noise.
 __pycache__/
 *.py[cod]
