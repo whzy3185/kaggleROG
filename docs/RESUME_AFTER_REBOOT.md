@@ -2,11 +2,12 @@
 
 ## Latest safe checkpoint — 2026-07-19
 
-- Today's competition budget: `3 / 5`.
+- Today's competition budget: `4 / 5`.
 - Pending score refs:
   - `54820459`: RobustPF sub7 lineage
   - `54820520`: Cycle8 public 6.909 exact reproduction
   - `54820549`: grouped OOF meta-residual direct route
+  - `54820920`: prefix-GR RF well-bias correction
 - All three private kernels completed and their final `submission.csv` files
   passed 14,151-row, ordered-ID, finite-value, and log checks before submission.
 - Cycle8 final SHA-256:
@@ -20,6 +21,10 @@
 - Public Code versions completed for the three agent research notebooks.
 - A04 scored documentation version 2 was pushed public and is running. Never
   submit that documentation version to the competition.
+- LGB v40 adaptive private version 1 is running. It is the only planned use of
+  the final daily slot, and only after a successful exact-output audit.
+- Neighbor TVT-shape transfer CV completed on all 773 wells. Best fixed route:
+  five donors within 750 ft, 30% blend, pooled RMSE `15.6153`; not submitted.
 - Detailed state: `docs/RESULTS_2026-07-19.md`.
 
 ## Exact next actions after restart — 2026-07-19
@@ -28,8 +33,8 @@
 2. If a pending result beats `7.010`, update README, the D19 result log, and
    the candidate notebook score cell before publishing its documentation
    version.
-3. Preserve the last two daily slots unless a materially independent candidate
-   has stronger evidence. Do not submit `gmax` micro-variants or AYO duplicates.
+3. Preserve the final daily slot for audited LGB v40 only. Do not submit
+   `gmax` micro-variants, AYO duplicates, or neighbor-transfer variants.
 4. After A04 public v2 completes, push G040 and Safe public documentation
    versions sequentially when a GPU slot is free.
 5. Run tests and JSON validation, then commit and push `main`.

@@ -2,12 +2,13 @@
 
 ## Current validated status (2026-07-19)
 
-- Daily competition submissions: `3 / 5`; the final two slots remain protected
-  until a candidate has evidence beyond a tiny parameter or rerun-noise change.
+- Daily competition submissions: `4 / 5`; the final slot is reserved for the
+  independent LGB v40 route if its long private run and output audit pass.
 - Audited submissions awaiting the hidden Kaggle rerun:
   - RobustPF sub7 lineage: ref `54820459`
   - Cycle8 public 6.909 exact reproduction: ref `54820520`
   - Grouped OOF meta-residual direct route: ref `54820549`
+  - Prefix-GR RF well-bias correction: ref `54820920`
 - All three private runs completed before submission and passed the 14,151-row
   ID-order, finite-value, log, and final-output audits.
 - The OOF meta route reports grouped OOF RMSE `9.8770`, a `0.5426` improvement
@@ -19,6 +20,9 @@
   small inside rerun noise.
 - The three agent research notebooks are now public, and the scored A04
   reproduction has been pushed as a public English documentation version.
+- A legal leave-one-well-out neighbor-shape transfer improved the anchor from
+  `15.9099` to `15.6153` pooled RMSE, but remained far behind the 7.x public
+  stack and was correctly withheld from Kaggle submission.
 - New public decision notebook:
   [Rerun Noise and Micro-Tuning Filter](https://www.kaggle.com/code/muelsyse111/rogii-rerun-noise-and-micro-tuning-filter).
 - Detailed evidence: [2026-07-19 results](docs/RESULTS_2026-07-19.md)

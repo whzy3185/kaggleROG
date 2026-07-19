@@ -1,6 +1,6 @@
 # Kaggle Discussion 区调研
 
-采集时间：2026-07-17。官方/host 信息与参赛者假设分开记录；参赛者公布的 CV、LB、百分比和“证明失败”等说法在本仓库重现实验前都视为线索。
+采集时间：2026-07-17；增量复查：2026-07-19。官方/host 信息与参赛者假设分开记录；参赛者公布的 CV、LB、百分比和“证明失败”等说法在本仓库重现实验前都视为线索。
 
 ## 官方更新
 
@@ -44,6 +44,19 @@
 1. 是否应迁移邻井完整 TVT profile，而非只拟合结构面？
 2. 多尺度/自日志参考/约束 warp 是否能救回 GR 对齐？
 3. 井是否存在两个或多个需要不同模型的自然 group？
+
+2026-07-19 复查评论区后增加四条线索：
+
+- 有参赛者建议近邻 `<150 ft` 时迁移完整 TVT 曲线形状，而不是只迁移结构面；
+- 方位相反的井应拆分处理，避免把正反钻进方向混在一个模型；
+- 另有参赛者称不使用邻井也能把单模型 pooled CV 做到 `<5 ft`，因此“近邻复制是唯一信号”不能当成定论；
+- 需要严格区分随机 grouped-by-well CV 与更困难的 field-grouped CV。
+
+本地 leave-one-well-out 复现只取得有限收益：750 ft 内最多五口同向邻井、30% TVT 形状迁移，把 pooled RMSE 从约 `15.9099` 降到 `15.6153`。这说明简单的归一化 MD 曲线复制有信号，但远不足以解释 sub-7，更不能直接提交。
+
+[Six independently-trained architectures, same blind spot](https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction/discussion/726834) 报告六种不同架构在约 2,600 ft 区间紧密收敛到同一错误分支，真值相对模型单调漂移到约 `-90 ft`。这支持把周期分支歧义作为结构性错误，而不是靠普通 ensemble 方差解决。
+
+[Is the sub-6 regime end-to-end learned, or engineered alignment?](https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction/discussion/727149) 进一步提出三个关键审计问题：sub-6 是端到端学习还是显式 warp/PF/HMM 坐标对齐；formation top 是否提供绝对层位锚；随机井分组的 5.x 与 field holdout 的约 10 是否来自场内结构泄漏。当前帖子尚无回答，保留为验证设计约束。
 
 [Worst performing well](https://www.kaggle.com/competitions/rogii-wellbore-geology-prediction/discussion/723815) 展示序列模型早期选错分支后持续漂移的典型失败。评估不能只看 pooled score，必须保存每井曲线和最坏井报告。
 
