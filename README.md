@@ -25,6 +25,8 @@
   stack and was correctly withheld from Kaggle submission.
 - New public decision notebook:
   [Rerun Noise and Micro-Tuning Filter](https://www.kaggle.com/code/muelsyse111/rogii-rerun-noise-and-micro-tuning-filter).
+- New public negative-result notebook:
+  [Neighbor Profile Transfer Honest Audit](https://www.kaggle.com/code/muelsyse111/rogii-neighbor-profile-transfer-honest-audit).
 - Detailed evidence: [2026-07-19 results](docs/RESULTS_2026-07-19.md)
 
 ## Current validated status (2026-07-18)
