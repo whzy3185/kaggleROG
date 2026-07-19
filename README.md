@@ -7,9 +7,11 @@
 - First completed D19 result:
   - [Cycle8 reproduction](https://www.kaggle.com/code/muelsyse111/rogii-cycle8-repro-measured-7-960):
     `7.960` (ref `54820520`; upstream source claim `6.909`)
+- Second completed D19 result:
+  - [Grouped OOF Meta reproduction](https://www.kaggle.com/code/muelsyse111/rogii-oof-meta-direct-repro-measured-7-866):
+    `7.866` (ref `54820549`; grouped OOF RMSE `9.8770`)
 - Audited submissions still awaiting the hidden Kaggle rerun:
   - RobustPF sub7 lineage: ref `54820459`
-  - Grouped OOF meta-residual direct route: ref `54820549`
   - Prefix-GR RF well-bias correction: ref `54820920`
   - Independent LGB/ET adaptive route: ref `54824801`
 - All five private runs completed before submission and passed the 14,151-row
