@@ -4,9 +4,11 @@
 
 - Daily competition submissions: exactly `5 / 5`; no further submission is
   allowed today.
-- Audited submissions awaiting the hidden Kaggle rerun:
+- First completed D19 result:
+  - [Cycle8 reproduction](https://www.kaggle.com/code/muelsyse111/rogii-cycle8-repro-measured-7-960):
+    `7.960` (ref `54820520`; upstream source claim `6.909`)
+- Audited submissions still awaiting the hidden Kaggle rerun:
   - RobustPF sub7 lineage: ref `54820459`
-  - Cycle8 public 6.909 exact reproduction: ref `54820520`
   - Grouped OOF meta-residual direct route: ref `54820549`
   - Prefix-GR RF well-bias correction: ref `54820920`
   - Independent LGB/ET adaptive route: ref `54824801`

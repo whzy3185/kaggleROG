@@ -5,14 +5,19 @@
 - Today's competition budget: exactly `5 / 5`; do not submit again.
 - Pending score refs:
   - `54820459`: RobustPF sub7 lineage
-  - `54820520`: Cycle8 public 6.909 exact reproduction
   - `54820549`: grouped OOF meta-residual direct route
   - `54820920`: prefix-GR RF well-bias correction
   - `54824801`: independent LGB/ET adaptive route
+- Completed D19 score:
+  - `54820520`: Cycle8 reproduction = `7.960` public RMSE; upstream source
+    claim was `6.909`.
 - All five private kernels completed and their final `submission.csv` files
   passed 14,151-row, ordered-ID, finite-value, and log checks before submission.
 - Cycle8 final SHA-256:
   `2b86386f19279e79e7184096f353ccf2b97785de67b268caa56aa5f85405a815`.
+- Cycle8 score-bearing public Code version:
+  `muelsyse111/rogii-cycle8-repro-measured-7-960`. Never submit this documentation
+  rerun to the competition.
 - OOF Meta final SHA-256:
   `981dc202697d7e06b06cc46e82aaaff9971b1c9b3f73bba29950ce72e09db00d`.
 - OOF Meta grouped OOF RMSE is `9.877028`, versus public ridge
