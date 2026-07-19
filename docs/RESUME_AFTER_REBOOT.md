@@ -2,13 +2,14 @@
 
 ## Latest safe checkpoint — 2026-07-19
 
-- Today's competition budget: `4 / 5`.
+- Today's competition budget: exactly `5 / 5`; do not submit again.
 - Pending score refs:
   - `54820459`: RobustPF sub7 lineage
   - `54820520`: Cycle8 public 6.909 exact reproduction
   - `54820549`: grouped OOF meta-residual direct route
   - `54820920`: prefix-GR RF well-bias correction
-- All three private kernels completed and their final `submission.csv` files
+  - `54824801`: independent LGB/ET adaptive route
+- All five private kernels completed and their final `submission.csv` files
   passed 14,151-row, ordered-ID, finite-value, and log checks before submission.
 - Cycle8 final SHA-256:
   `2b86386f19279e79e7184096f353ccf2b97785de67b268caa56aa5f85405a815`.
@@ -21,8 +22,13 @@
 - Public Code versions completed for the three agent research notebooks.
 - A04 scored documentation version 2 was pushed public and is running. Never
   submit that documentation version to the competition.
-- LGB v40 adaptive private version 1 is running. It is the only planned use of
-  the final daily slot, and only after a successful exact-output audit.
+- LGB v40 adaptive private version 1 completed successfully and used the final
+  daily slot after its exact-output audit passed. Its per-well adaptive CV RMSE
+  is `9.5355`; final SHA-256 is
+  `28603fe1ad9e5a958ca237dba143b5c3af33673f85e010c5f8fd7673e798e190`.
+- LGB visible RMS distances are `10.484754 / 10.371602 / 9.402353 /
+  10.684860 ft` versus A04 / Cycle8 / OOF Meta / WellBias. It is
+  `8.126623 ft` RMS from the downloaded upstream output.
 - Neighbor TVT-shape transfer CV completed on all 773 wells. Best fixed route:
   five donors within 750 ft, 30% blend, pooled RMSE `15.6153`; not submitted.
 - Detailed state: `docs/RESULTS_2026-07-19.md`.
@@ -30,14 +36,12 @@
 ## Exact next actions after restart — 2026-07-19
 
 1. Poll competition submissions; do not resubmit any pending ref.
-2. If a pending result beats `7.010`, update README, the D19 result log, and
-   the candidate notebook score cell before publishing its documentation
-   version.
-3. Preserve the final daily slot for audited LGB v40 only. Do not submit
-   `gmax` micro-variants, AYO duplicates, or neighbor-transfer variants.
-4. After A04 public v2 completes, push G040 and Safe public documentation
-   versions sequentially when a GPU slot is free.
-5. Run tests and JSON validation, then commit and push `main`.
+2. As each real score arrives, update README, the D19 result log, experiment
+   log, and the candidate notebook score cell before publishing its
+   documentation version.
+3. Do not competition-submit documentation versions, `gmax` micro-variants,
+   AYO duplicates, or neighbor-transfer variants.
+4. Run tests and JSON validation, then commit and push `main`.
 
 ## Latest safe checkpoint — 2026-07-18
 

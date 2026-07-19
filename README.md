@@ -2,15 +2,20 @@
 
 ## Current validated status (2026-07-19)
 
-- Daily competition submissions: `4 / 5`; the final slot is reserved for the
-  independent LGB v40 route if its long private run and output audit pass.
+- Daily competition submissions: exactly `5 / 5`; no further submission is
+  allowed today.
 - Audited submissions awaiting the hidden Kaggle rerun:
   - RobustPF sub7 lineage: ref `54820459`
   - Cycle8 public 6.909 exact reproduction: ref `54820520`
   - Grouped OOF meta-residual direct route: ref `54820549`
   - Prefix-GR RF well-bias correction: ref `54820920`
-- All three private runs completed before submission and passed the 14,151-row
+  - Independent LGB/ET adaptive route: ref `54824801`
+- All five private runs completed before submission and passed the 14,151-row
   ID-order, finite-value, log, and final-output audits.
+- The LGB/ET adaptive run reports per-well adaptive CV RMSE `9.5355`. Its final
+  SHA-256 is
+  `28603fe1ad9e5a958ca237dba143b5c3af33673f85e010c5f8fd7673e798e190`,
+  and its visible prediction is `10.4848 ft` RMS from A04.
 - The OOF meta route reports grouped OOF RMSE `9.8770`, a `0.5426` improvement
   over its public ridge baseline, and is materially different from the A04
   visible prediction (`3.3722 ft` RMS).
