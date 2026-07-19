@@ -1,20 +1,46 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current validated status (2026-07-19)
+
+- Daily competition submissions: `3 / 5`; the final two slots remain protected
+  until a candidate has evidence beyond a tiny parameter or rerun-noise change.
+- Audited submissions awaiting the hidden Kaggle rerun:
+  - RobustPF sub7 lineage: ref `54820459`
+  - Cycle8 public 6.909 exact reproduction: ref `54820520`
+  - Grouped OOF meta-residual direct route: ref `54820549`
+- All three private runs completed before submission and passed the 14,151-row
+  ID-order, finite-value, log, and final-output audits.
+- The OOF meta route reports grouped OOF RMSE `9.8770`, a `0.5426` improvement
+  over its public ridge baseline, and is materially different from the A04
+  visible prediction (`3.3722 ft` RMS).
+- Two new model-package variants (`gmax=0.0075/0.010`) differ by only
+  `0.0055 ft` RMS and sit within `0.0220 ft` RMS of Cycle8. They were rejected
+  as quota candidates because the public ablation evidence puts changes this
+  small inside rerun noise.
+- The three agent research notebooks are now public, and the scored A04
+  reproduction has been pushed as a public English documentation version.
+- Detailed evidence: [2026-07-19 results](docs/RESULTS_2026-07-19.md)
+
 ## Current validated status (2026-07-18)
 
 - Daily competition submissions: exactly `5 / 5`; no further submission.
 - Score-bearing public-source reproductions:
-  - [Public rebuild](https://www.kaggle.com/code/muelsyse111/rogii-d18-public-rebuild-7295): `SCORE_1` (`54808956`)
-  - [Dual track](https://www.kaggle.com/code/muelsyse111/rogii-d18-dual-track-calibrated): `SCORE_2` (`54808958`)
-  - [A04 residual transfer](https://www.kaggle.com/code/muelsyse111/rogii-d18-a04-residual-transfer-repro): `SCORE_3` (`54809311`)
-  - [G040/S12](https://www.kaggle.com/code/muelsyse111/rogii-d18-anchor-g040-s12-repro): `SCORE_4` (`54809350`)
-  - [Safe rebuild](https://www.kaggle.com/code/muelsyse111/rogii-d18-safe-rebuild-7016-repro): `SCORE_5` (`54809629`)
+  - [Public rebuild](https://www.kaggle.com/code/muelsyse111/rogii-d18-public-rebuild-7295): `9.571` (`54808956`)
+  - [Dual track](https://www.kaggle.com/code/muelsyse111/rogii-d18-dual-track-calibrated): `7.123` (`54808958`)
+  - [A04 residual transfer](https://www.kaggle.com/code/muelsyse111/rogii-d18-a04-residual-transfer-repro): `7.010` (`54809311`)
+  - [G040/S12](https://www.kaggle.com/code/muelsyse111/rogii-d18-anchor-g040-s12-repro): `7.170` (`54809350`)
+  - [Safe rebuild](https://www.kaggle.com/code/muelsyse111/rogii-d18-safe-rebuild-7016-repro): `7.130` (`54809629`)
 - New public research notebooks:
   - [Five-Submission Agent Playbook](https://www.kaggle.com/code/muelsyse111/rogii-five-submission-agent-playbook)
   - [Public Route Distance Atlas](https://www.kaggle.com/code/muelsyse111/rogii-public-route-distance-atlas)
   - [Public Artifact Lineage Checklist](https://www.kaggle.com/code/muelsyse111/rogii-public-artifact-lineage-checklist)
 - Independent full 773-well particle audit: 65% particle blend RMSE `12.7989`;
   retained as a local floor and not submitted.
+- Best public LB: A04 residual transfer at `7.010`, improving the previous
+  in-repository best `12.774` by `5.764` RMSE.
+- Public rebuild and safe rebuild had byte-identical visible predictions but
+  scored `9.571` and `7.130`; hidden execution lineage and fallback behavior
+  must be treated as first-class experimental variables.
 - Detailed evidence: [2026-07-18 results](docs/RESULTS_2026-07-18.md)
 - Agent-ready research queue: [Agent playbook](research/AGENT_PLAYBOOK_2026-07-18.md)
 

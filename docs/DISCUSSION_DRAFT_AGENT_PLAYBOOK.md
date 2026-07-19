@@ -7,11 +7,11 @@ Five recent public routes were rerun under new private notebook versions:
 
 | Route | My public RMSE | Submission |
 |---|---:|---:|
-| Public rebuild | SCORE_1 | 54808956 |
-| Dual-track calibrated | SCORE_2 | 54808958 |
-| A04 residual transfer | SCORE_3 | REF_3 |
-| G040/S12 gate | SCORE_4 | REF_4 |
-| Safe rebuild | SCORE_5 | REF_5 |
+| Public rebuild | 9.571 | 54808956 |
+| Dual-track calibrated | 7.123 | 54808958 |
+| A04 residual transfer | 7.010 | 54809311 |
+| G040/S12 gate | 7.170 | 54809350 |
+| Safe rebuild | 7.130 | 54809629 |
 
 Sources and attribution:
 
@@ -41,9 +41,11 @@ has a large common absolute level. RMS prediction distance is more useful:
 - public rebuild vs safe rebuild: 0.00000 ft;
 - my earlier independent particle route vs public rebuild: 9.41209 ft.
 
-The public rebuild and safe rebuild are byte-identical on visible rows. Their
-different notebooks are therefore a lineage experiment, not a visible
-prediction-diversity experiment.
+The public rebuild and safe rebuild are byte-identical on visible rows, yet
+they scored 9.571 and 7.130. This 2.441 RMSE gap is the strongest result of the
+experiment: visible output identity does not guarantee hidden execution
+identity. Dependency resolution, fallback paths, and hidden-test behavior must
+be part of the model lineage.
 
 Among the three visible test wells, cross-candidate disagreement is largest on
 `00bbac68`, followed by `00e12e8b` and `000d7d20`. I treat this only as an
@@ -72,5 +74,4 @@ stronger.
 The accompanying public Code notebook contains the exact score ledger,
 candidate-distance table, and reusable state machine:
 
-CODE_NOTEBOOK_URL
-
+https://www.kaggle.com/code/muelsyse111/rogii-five-submission-agent-playbook

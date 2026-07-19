@@ -1,11 +1,45 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest safe checkpoint — 2026-07-19
+
+- Today's competition budget: `3 / 5`.
+- Pending score refs:
+  - `54820459`: RobustPF sub7 lineage
+  - `54820520`: Cycle8 public 6.909 exact reproduction
+  - `54820549`: grouped OOF meta-residual direct route
+- All three private kernels completed and their final `submission.csv` files
+  passed 14,151-row, ordered-ID, finite-value, and log checks before submission.
+- Cycle8 final SHA-256:
+  `2b86386f19279e79e7184096f353ccf2b97785de67b268caa56aa5f85405a815`.
+- OOF Meta final SHA-256:
+  `981dc202697d7e06b06cc46e82aaaff9971b1c9b3f73bba29950ce72e09db00d`.
+- OOF Meta grouped OOF RMSE is `9.877028`, versus public ridge
+  `10.419669`; it is `3.372194 ft` RMS from the current A04 output.
+- New `gmax=0.0075/0.010` public variants were downloaded and rejected:
+  only `0.005488 ft` RMS apart and within `0.021953 ft` of Cycle8.
+- Public Code versions completed for the three agent research notebooks.
+- A04 scored documentation version 2 was pushed public and is running. Never
+  submit that documentation version to the competition.
+- Detailed state: `docs/RESULTS_2026-07-19.md`.
+
+## Exact next actions after restart — 2026-07-19
+
+1. Poll competition submissions; do not resubmit any pending ref.
+2. If a pending result beats `7.010`, update README, the D19 result log, and
+   the candidate notebook score cell before publishing its documentation
+   version.
+3. Preserve the last two daily slots unless a materially independent candidate
+   has stronger evidence. Do not submit `gmax` micro-variants or AYO duplicates.
+4. After A04 public v2 completes, push G040 and Safe public documentation
+   versions sequentially when a GPU slot is free.
+5. Run tests and JSON validation, then commit and push `main`.
+
 ## Latest safe checkpoint — 2026-07-18
 
 - Today's competition budget is exhausted: exactly `5 / 5` submissions, with
   no sixth submission allowed.
-- Pending score refs: `54808956`, `54808958`, `54809311`, `54809350`,
-  `54809629`.
+- Completed scores: `54808956=9.571`, `54808958=7.123`,
+  `54809311=7.010`, `54809350=7.170`, `54809629=7.130`.
 - All five source notebooks completed privately before submission.
 - All five `submission.csv` files passed exact 14,151-row sample ID order,
   finite-value, log, and SHA-256 audits.
@@ -15,22 +49,21 @@
   `rogii-public-route-distance-atlas`, and
   `rogii-public-artifact-lineage-checklist` completed private CPU smoke runs.
 - The five score-bearing reproduction notebooks and three new research
-  notebooks remain private until the real scores are written into their English
-  descriptions.
+  notebooks have completed private smoke runs. Their English descriptions now
+  contain the measured scores and they are ready for public documentation
+  versions.
 - Unit tests: 14 passing.
 - A score-polling process may still be active. If not, rerun the submissions
   command below. Do not submit again.
 
 ## Exact next actions after restart
 
-1. Poll the five refs until all are `COMPLETE`.
-2. Replace score/reference placeholders in the five reproduction notebooks,
-   three research notebooks, result log, experiment ledger, and Discussion
-   draft.
-3. Change notebook metadata to public and push documentation versions only.
+1. Change notebook metadata to public and push documentation versions only.
    Never submit those later versions.
-4. Update README, run the 14-test suite, commit, and push GitHub.
-5. Publish the English Discussion only after it links to the completed public
+2. Review new Code routes against the `7.010` A04 best before using any
+   2026-07-19 submission.
+3. Update README, run the 14-test suite, commit, and push GitHub.
+4. Publish the English Discussion only after it links to the completed public
    Agent Playbook.
 
 ## Previous safe state — 2026-07-17
