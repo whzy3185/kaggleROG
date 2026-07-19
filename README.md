@@ -19,6 +19,8 @@
   small inside rerun noise.
 - The three agent research notebooks are now public, and the scored A04
   reproduction has been pushed as a public English documentation version.
+- New public decision notebook:
+  [Rerun Noise and Micro-Tuning Filter](https://www.kaggle.com/code/muelsyse111/rogii-rerun-noise-and-micro-tuning-filter).
 - Detailed evidence: [2026-07-19 results](docs/RESULTS_2026-07-19.md)
 
 ## Current validated status (2026-07-18)
