@@ -4,19 +4,24 @@
 
 - Daily competition submissions: exactly `5 / 5`; no further submission is
   allowed today.
-- First completed D19 result:
-  - [Cycle8 reproduction](https://www.kaggle.com/code/muelsyse111/rogii-cycle8-repro-measured-7-960):
-    `7.960` (ref `54820520`; upstream source claim `6.909`)
-- Second completed D19 result:
+- All five D19 submissions completed:
+  - Prefix-GR RF WellBias: **`6.988`** (ref `54820920`; new repository best)
+  - RobustPF sub7 reproduction: `7.454` (ref `54820459`)
   - [Grouped OOF Meta reproduction](https://www.kaggle.com/code/muelsyse111/rogii-oof-meta-direct-repro-measured-7-866):
     `7.866` (ref `54820549`; grouped OOF RMSE `9.8770`)
-- Audited submissions still awaiting the hidden Kaggle rerun:
-  - RobustPF sub7 lineage: ref `54820459`
-  - Prefix-GR RF well-bias correction: ref `54820920`
-  - Independent LGB/ET adaptive route: ref `54824801`
+  - [Cycle8 reproduction](https://www.kaggle.com/code/muelsyse111/rogii-cycle8-repro-measured-7-960):
+    `7.960` (ref `54820520`; upstream source claim `6.909`)
+  - Independent LGB/ET adaptive route: `10.308` (ref `54824801`)
 - All five private runs completed before submission and passed the 14,151-row
   ID-order, finite-value, log, and final-output audits.
-- The LGB/ET adaptive run reports per-well adaptive CV RMSE `9.5355`. Its final
+- WellBias improves the former A04 best (`7.010`) by `0.022` RMSE while moving
+  the visible prediction by `0.3710 ft` RMS. Its final SHA-256 is
+  `54d5b3b08943e55c2c60a6fcb8b15edf5a950afa469f0978f6a40ff5c81d039d`.
+- RobustPF and Cycle8 produced numerically identical visible predictions but
+  scored `7.454` and `7.960`, a `0.506` gap that reinforces execution lineage
+  as an experimental variable.
+- The LGB/ET adaptive run reports per-well adaptive CV RMSE `9.5355` but scored
+  `10.308`. Its final
   SHA-256 is
   `28603fe1ad9e5a958ca237dba143b5c3af33673f85e010c5f8fd7673e798e190`,
   and its visible prediction is `10.4848 ft` RMS from A04.

@@ -3,15 +3,14 @@
 ## Latest safe checkpoint — 2026-07-19
 
 - Today's competition budget: exactly `5 / 5`; do not submit again.
-- Pending score refs:
-  - `54820459`: RobustPF sub7 lineage
-  - `54820920`: prefix-GR RF well-bias correction
-  - `54824801`: independent LGB/ET adaptive route
-- Completed D19 scores:
+- Completed D19 scores (all five refs are final):
+  - `54820920`: prefix-GR RF WellBias = `6.988` public RMSE; new repository best.
+  - `54820459`: RobustPF sub7 lineage = `7.454` public RMSE.
   - `54820520`: Cycle8 reproduction = `7.960` public RMSE; upstream source
     claim was `6.909`.
   - `54820549`: grouped OOF Meta direct route = `7.866` public RMSE; grouped
     OOF ramped RMSE was `9.877028`.
+  - `54824801`: independent LGB/ET adaptive route = `10.308` public RMSE.
 - All five private kernels completed and their final `submission.csv` files
   passed 14,151-row, ordered-ID, finite-value, and log checks before submission.
 - Cycle8 final SHA-256:
@@ -26,6 +25,11 @@
   documentation rerun to the competition.
 - OOF Meta grouped OOF RMSE is `9.877028`, versus public ridge
   `10.419669`; it is `3.372194 ft` RMS from the current A04 output.
+- RobustPF and Cycle8 produced numerically identical visible predictions but
+  scored `7.454` and `7.960`, a `0.506` execution-lineage gap.
+- WellBias final SHA-256 is
+  `54d5b3b08943e55c2c60a6fcb8b15edf5a950afa469f0978f6a40ff5c81d039d`;
+  it is `0.371033 ft` RMS from A04 and improves A04 by `0.022` public RMSE.
 - New `gmax=0.0075/0.010` public variants were downloaded and rejected:
   only `0.005488 ft` RMS apart and within `0.021953 ft` of Cycle8.
 - Public Code versions completed for the three agent research notebooks.
@@ -44,13 +48,12 @@
 
 ## Exact next actions after restart — 2026-07-19
 
-1. Poll competition submissions; do not resubmit any pending ref.
-2. As each real score arrives, update README, the D19 result log, experiment
-   log, and the candidate notebook score cell before publishing its
-   documentation version.
-3. Do not competition-submit documentation versions, `gmax` micro-variants,
-   AYO duplicates, or neighbor-transfer variants.
-4. Run tests and JSON validation, then commit and push `main`.
+1. D19 is complete; do not resubmit any D19 ref or documentation version.
+2. Use WellBias `6.988` as the measured reference for new candidate triage.
+3. Do not submit `gmax` micro-variants, AYO duplicates, or neighbor-transfer
+   variants.
+4. Run tests and JSON validation after each material result update, then commit
+   and push `main`.
 
 ## Latest safe checkpoint — 2026-07-18
 
