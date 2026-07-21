@@ -6,10 +6,10 @@
   scored **`6.934`** (ref `54846177`).
 - The D20 midpoint-alpha ladder was monotonic: `6.979 / 6.958 / 6.941` for
   alpha `1.4 / 1.6 / 1.8`; A12 tied the `6.979` control.
-- The D21 UTC budget started at `0 / 5`. Five routes are pre-registered: exact
-  MHA250SEP2 and MHA260SEP3 public reproductions, MHA260SEP2, and the
-  MHA250/MHA260 SEP2 WellBias combinations.
-- Every D21 route must complete privately and pass the 14,151-row ordered-ID,
+- The D21 UTC budget is final at exactly `5 / 5`; no further competition
+  submission is allowed today. Refs `54869017 / 54869048 / 54869266 /
+  54869268 / 54869492` are pending their real public scores.
+- All five D21 routes completed privately and passed the 14,151-row ordered-ID,
   finite-value, final-file, and fatal-log audits before submission.
 - Detailed evidence: [2026-07-21 results](docs/RESULTS_2026-07-21.md)
 

@@ -10,12 +10,13 @@
   - `54846177`: MHA160SEP4 plus WellBias = `6.934`, the repository best.
 - All D20 private artifacts passed the 14,151-row ordered-ID, finite-value,
   SHA-256, and fatal-log audits before submission.
-- D21 UTC budget started at `0 / 5`. The five pre-registered routes are exact
-  MHA250SEP2, exact MHA260SEP3, derived MHA260SEP2, MHA250SEP2 plus WellBias,
-  and MHA260SEP2 plus WellBias.
-- At this checkpoint, private version 1 of the two exact public controls is
-  running. The three derived versions are prepared locally but not yet pushed
-  because Kaggle allows only two concurrent GPU batch sessions.
+- D21 UTC budget is final at exactly `5 / 5`; do not submit again today. The
+  five submitted refs are `54869017 / 54869048 / 54869266 / 54869268 /
+  54869492`, and all real scores are pending.
+- The routes are exact MHA250SEP2, exact MHA260SEP3, derived MHA260SEP2,
+  MHA250SEP2 plus WellBias, and MHA260SEP2 plus WellBias. All five private
+  version-1 artifacts passed the 14,151-row ordered-ID, finite-value,
+  final-file, SHA-256, probe-off, and fatal-log audits before submission.
 - Never competition-submit a later public documentation version. Public Code
   versions may be created only after the exact private scoring version is
   audited and submitted.
