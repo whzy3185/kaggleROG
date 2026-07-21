@@ -1,5 +1,26 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest safe checkpoint - 2026-07-21
+
+- D20 is final at exactly `5 / 5` submissions:
+  - `54845744`: MHA140SEP4 = `6.979`.
+  - `54845785`: MHA160SEP4 = `6.958`.
+  - `54845963`: MHA180SEP4 = `6.941`.
+  - `54846028`: A12 self-log Viterbi = `6.979`.
+  - `54846177`: MHA160SEP4 plus WellBias = `6.934`, the repository best.
+- All D20 private artifacts passed the 14,151-row ordered-ID, finite-value,
+  SHA-256, and fatal-log audits before submission.
+- D21 UTC budget started at `0 / 5`. The five pre-registered routes are exact
+  MHA250SEP2, exact MHA260SEP3, derived MHA260SEP2, MHA250SEP2 plus WellBias,
+  and MHA260SEP2 plus WellBias.
+- At this checkpoint, private version 1 of the two exact public controls is
+  running. The three derived versions are prepared locally but not yet pushed
+  because Kaggle allows only two concurrent GPU batch sessions.
+- Never competition-submit a later public documentation version. Public Code
+  versions may be created only after the exact private scoring version is
+  audited and submitted.
+- No automation or recurring task is active.
+
 ## Latest safe checkpoint — 2026-07-19
 
 - Today's competition budget: exactly `5 / 5`; do not submit again.

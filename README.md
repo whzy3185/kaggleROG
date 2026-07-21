@@ -1,5 +1,18 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current validated status (2026-07-21)
+
+- D20 established a new repository best: MHA160SEP4 plus grouped-OOF WellBias
+  scored **`6.934`** (ref `54846177`).
+- The D20 midpoint-alpha ladder was monotonic: `6.979 / 6.958 / 6.941` for
+  alpha `1.4 / 1.6 / 1.8`; A12 tied the `6.979` control.
+- The D21 UTC budget started at `0 / 5`. Five routes are pre-registered: exact
+  MHA250SEP2 and MHA260SEP3 public reproductions, MHA260SEP2, and the
+  MHA250/MHA260 SEP2 WellBias combinations.
+- Every D21 route must complete privately and pass the 14,151-row ordered-ID,
+  finite-value, final-file, and fatal-log audits before submission.
+- Detailed evidence: [2026-07-21 results](docs/RESULTS_2026-07-21.md)
+
 ## Current validated status (2026-07-19)
 
 - Daily competition submissions: exactly `5 / 5`; no further submission is
