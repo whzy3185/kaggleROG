@@ -17,6 +17,7 @@ submission_*.csv
 # attribution/audit notes in Git, but do not mirror third-party notebook source
 # into this repository without an explicit compatible license.
 research/pulled_*/
+research/published_*/
 
 # Python and notebook noise.
 __pycache__/

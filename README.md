@@ -2,16 +2,36 @@
 
 ## Current validated status (2026-07-21)
 
-- D20 established a new repository best: MHA160SEP4 plus grouped-OOF WellBias
-  scored **`6.934`** (ref `54846177`).
-- The D20 midpoint-alpha ladder was monotonic: `6.979 / 6.958 / 6.941` for
-  alpha `1.4 / 1.6 / 1.8`; A12 tied the `6.979` control.
+- D21 established a new repository best: MHA260SEP2 plus grouped-OOF WellBias
+  scored **`6.829`** (ref `54869492`). MHA250SEP2 plus WellBias was the
+  runner-up at `6.832` (ref `54869268`).
+- The five final D21 scores were `6.858 / 6.849 / 6.855 / 6.832 / 6.829`.
+  WellBias improved both SEP2 alpha settings by exactly `0.026`, while alpha
+  `2.6` improved alpha `2.5` by `0.003` with and without WellBias.
 - The D21 UTC budget is final at exactly `5 / 5`; no further competition
-  submission is allowed today. Refs `54869017 / 54869048 / 54869266 /
-  54869268 / 54869492` are pending their real public scores.
+  submission was made after refs `54869017 / 54869048 / 54869266 / 54869268 /
+  54869492`.
 - All five D21 routes completed privately and passed the 14,151-row ordered-ID,
   finite-value, final-file, and fatal-log audits before submission.
 - Detailed evidence: [2026-07-21 results](docs/RESULTS_2026-07-21.md)
+
+## Current experiment status (2026-07-22)
+
+- The current score-ascending public source reports `6.594`. Its public
+  documentation reproduction produced a byte-identical 14,151-row output with
+  SHA-256 `b192d3f348ae00680dc4df942b95cef5fd708c636a741f77dfb6b6e89b9ded4a`.
+- The five pre-registered routes were cap `2.0 / 2.5 / 3.0`, plus cap
+  `2.0 / 2.5` crossed with grouped-OOF WellBias. All five private outputs passed
+  the 14,151-row ordered-ID, finite-value, SHA-256, branch-report, and fatal-log
+  audits before submission.
+- The D22 budget is final at exactly `5 / 5`; refs `54895366 / 54895437 /
+  54895837 / 54896174 / 54896197` are pending their real public scores. No
+  further competition submission is allowed today.
+- The D21 runner-up is published as English Code:
+  [`rogii-mha250sep2-wellbias-measured-6-832`](https://www.kaggle.com/code/muelsyse111/rogii-mha250sep2-wellbias-measured-6-832).
+  Version 1 completed publicly and is byte-identical to the private scoring
+  artifact (SHA-256 `3d1069d2d40eeb3e508d73318aedcd8d164a1177b2075d9bc9608d3fa49a583d`).
+- Detailed evidence: [2026-07-22 results](docs/RESULTS_2026-07-22.md)
 
 ## Current validated status (2026-07-19)
 

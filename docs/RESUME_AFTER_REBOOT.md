@@ -12,7 +12,7 @@
   SHA-256, and fatal-log audits before submission.
 - D21 UTC budget is final at exactly `5 / 5`; do not submit again today. The
   five submitted refs are `54869017 / 54869048 / 54869266 / 54869268 /
-  54869492`, and all real scores are pending.
+  54869492`; their final scores are `6.858 / 6.849 / 6.855 / 6.832 / 6.829`.
 - The routes are exact MHA250SEP2, exact MHA260SEP3, derived MHA260SEP2,
   MHA250SEP2 plus WellBias, and MHA260SEP2 plus WellBias. All five private
   version-1 artifacts passed the 14,151-row ordered-ID, finite-value,
@@ -20,6 +20,24 @@
 - Never competition-submit a later public documentation version. Public Code
   versions may be created only after the exact private scoring version is
   audited and submitted.
+- No automation or recurring task is active.
+
+## Latest active checkpoint - 2026-07-22
+
+- D21 final scores are `6.858 / 6.849 / 6.855 / 6.832 / 6.829`; ref `54869492`
+  is the repository best and ref `54869268` is the runner-up selected for an
+  English public Code edition.
+- D22 is final at exactly `5 / 5` submissions; do not submit again today. Refs
+  `54895366 / 54895437 / 54895837 / 54896174 / 54896197` are pending real
+  scores.
+- The five P100 routes are cap `2.0 / 2.5 / 3.0`, cap 2 plus WellBias, and cap
+  2.5 plus WellBias. Every private artifact passed the 14,151-row ordered-ID,
+  finite-value, final-hash, branch/WellBias-difference, and fatal-log audits.
+- The D21 runner-up English public Code is
+  `muelsyse111/rogii-mha250sep2-wellbias-measured-6-832` Version 1. It was
+  completed publicly as Code only, byte-matched the private scoring artifact,
+  and must never be competition-submitted.
+- Never submit the later public documentation edition to the competition.
 - No automation or recurring task is active.
 
 ## Latest safe checkpoint — 2026-07-19
