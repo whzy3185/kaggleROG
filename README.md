@@ -1,5 +1,26 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current experiment status (2026-07-23)
+
+- D22 is final: cap `2.0 / 2.5 / 3.0` each scored `6.667`, while cap 2 and
+  cap 2.5 crossed with grouped-OOF WellBias each scored **`6.638`**. The two
+  orthogonal corrections therefore improved the no-WellBias tier by `0.029`.
+- The D23 grid contains five materially distinct routes: A27 centered PF-1.3
+  branch shape, A31 mean-preserving Toe tilt, A28 PF-1.3 blend `w=0.62`,
+  U-continuity8, and A27 crossed with grouped-OOF WellBias.
+- The D23 budget is final at exactly `5 / 5`: refs `54917836 / 54917838 /
+  54918138 / 54918139 / 54918377`. All private v1 artifacts passed the final
+  output and log audits before submission; all five real scores are pending.
+- Current high-ranking public Code was audited before reuse. Six differently
+  titled notebooks produced the same byte-identical P100 cap-2 artifact, so
+  only genuine output changes were admitted to the D23 grid.
+- The selected D22 runner-up-tier representative is cap 2.5 (`6.667`, ref
+  `54895437`). Its English public Code edition completed as
+  [`rogii-p100-cap2-5-measured-6-667`](https://www.kaggle.com/code/muelsyse111/rogii-p100-cap2-5-measured-6-667)
+  and is byte-exact to the scoring artifact (SHA-256 `2d2d40b...778494`). It
+  must never be competition-submitted.
+- Detailed evidence: [2026-07-23 results](docs/RESULTS_2026-07-23.md)
+
 ## Current validated status (2026-07-21)
 
 - D21 established a new repository best: MHA260SEP2 plus grouped-OOF WellBias
@@ -15,7 +36,7 @@
   finite-value, final-file, and fatal-log audits before submission.
 - Detailed evidence: [2026-07-21 results](docs/RESULTS_2026-07-21.md)
 
-## Current experiment status (2026-07-22)
+## Completed experiment status (2026-07-22)
 
 - The current score-ascending public source reports `6.594`. Its public
   documentation reproduction produced a byte-identical 14,151-row output with
@@ -25,8 +46,8 @@
   the 14,151-row ordered-ID, finite-value, SHA-256, branch-report, and fatal-log
   audits before submission.
 - The D22 budget is final at exactly `5 / 5`; refs `54895366 / 54895437 /
-  54895837 / 54896174 / 54896197` are pending their real public scores. No
-  further competition submission is allowed today.
+  54895837 / 54896174 / 54896197` scored `6.667 / 6.667 / 6.667 / 6.638 /
+  6.638`. The tied WellBias routes are the repository best.
 - The D21 runner-up is published as English Code:
   [`rogii-mha250sep2-wellbias-measured-6-832`](https://www.kaggle.com/code/muelsyse111/rogii-mha250sep2-wellbias-measured-6-832).
   Version 1 completed publicly and is byte-identical to the private scoring

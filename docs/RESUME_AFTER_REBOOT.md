@@ -1,5 +1,29 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest active checkpoint - 2026-07-23
+
+- D22 final scores are `6.667 / 6.667 / 6.667 / 6.638 / 6.638` for refs
+  `54895366 / 54895437 / 54895837 / 54896174 / 54896197`. The two WellBias
+  crosses tie for the repository best; cap 2.5 is the selected representative
+  of the tied `6.667` runner-up tier.
+- D23 began at exactly `0 / 5`. The pre-registered routes are A27 PF-1.3
+  centered shape, A31 Toe tilt, A28 PF-1.3 `w=0.62`, U-continuity8, and A27
+  crossed with grouped-OOF WellBias.
+- A27, A31, A28, U-continuity8, and A27 plus WellBias private version 1 passed
+  their 14,151-row exact-order, finite-value, SHA-256, and fatal-log audits and
+  were submitted as refs `54917836 / 54917838 / 54918138 / 54918139 /
+  54918377`. The budget is final at exactly `5 / 5`; all scores are pending and
+  no later submission is allowed today.
+- The first attempted longer A27-WellBias slug left no runnable notebook and
+  consumed no competition submission. The valid private scorer is
+  `muelsyse111/rogii-d23-a27-pf13-wb` Version 1.
+- The D22 cap-2.5 English public Code completed as
+  `muelsyse111/rogii-p100-cap2-5-measured-6-667`, byte-exact to the private
+  scoring artifact. It must never be submitted.
+- The D22 cap-2.5 runner-up public Code is a documentation rerun only. Never
+  submit that later public version to the competition.
+- No automation or recurring task is active or should be created.
+
 ## Latest safe checkpoint - 2026-07-21
 
 - D20 is final at exactly `5 / 5` submissions:
