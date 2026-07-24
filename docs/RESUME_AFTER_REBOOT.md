@@ -1,5 +1,26 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest active checkpoint - 2026-07-24
+
+- D23 final scored results are A27 `6.476`, A31 `6.546`, A27 plus WellBias
+  `6.562`, and U-continuity8 `6.617`. A28 completed without a public score.
+  Refs are `54917836 / 54917838 / 54918138 / 54918139 / 54918377`.
+- A27 is the repository best; A31 is the selected scored runner-up for an
+  English public Code edition. Never submit the later public version.
+- D24 is final at exactly `5 / 5`: refs `54941181 / 54941242 / 54941455 /
+  54941513 / 54941756`. Routes are A27 weights `0.08 / 0.12 / 0.15` and
+  weights `0.10 / 0.12` crossed with the A31-derived zero-mean Toe tilt.
+- All five own Version 1 outputs passed ordered-ID, finite-value, SHA-256,
+  controlled-distance, non-duplicate, and fatal-log audits. Scores are pending.
+  Never submit a later documentation version or any sixth D24 candidate.
+- The English A31 runner-up notebook completed privately and is byte-exact to
+  ref `54917838`'s scoring artifact, SHA-256 `530fcc1bf6d6f699...a1c0`.
+  Kaggle currently rejects public visibility for notebooks with this
+  competition source until the competition ends. Keep the source attached,
+  never submit this documentation version, and publish only when Kaggle
+  permits it.
+- No automation or recurring task is active or should be created.
+
 ## Latest active checkpoint - 2026-07-23
 
 - D22 final scores are `6.667 / 6.667 / 6.667 / 6.638 / 6.638` for refs

@@ -9,8 +9,9 @@
   branch shape, A31 mean-preserving Toe tilt, A28 PF-1.3 blend `w=0.62`,
   U-continuity8, and A27 crossed with grouped-OOF WellBias.
 - The D23 budget is final at exactly `5 / 5`: refs `54917836 / 54917838 /
-  54918138 / 54918139 / 54918377`. All private v1 artifacts passed the final
-  output and log audits before submission; all five real scores are pending.
+  54918138 / 54918139 / 54918377`. A27 scored **`6.476`**, A31 scored `6.546`,
+  A27 plus WellBias scored `6.562`, U-continuity8 scored `6.617`, and A28
+  completed without a published score. A27 is the repository best.
 - Current high-ranking public Code was audited before reuse. Six differently
   titled notebooks produced the same byte-identical P100 cap-2 artifact, so
   only genuine output changes were admitted to the D23 grid.
@@ -20,6 +21,25 @@
   and is byte-exact to the scoring artifact (SHA-256 `2d2d40b...778494`). It
   must never be competition-submitted.
 - Detailed evidence: [2026-07-23 results](docs/RESULTS_2026-07-23.md)
+
+## Current experiment status (2026-07-24)
+
+- The D24 budget is final at exactly `5 / 5`: refs `54941181 / 54941242 /
+  54941455 / 54941513 / 54941756`. The routes are A27 weights `0.08 / 0.12 /
+  0.15`, plus weights `0.10 / 0.12` crossed with the A31-derived zero-mean
+  0.18 ft Heel-to-Toe tilt. All five own outputs passed ordered-ID,
+  finite-value, SHA-256, controlled-distance, non-duplicate, and log audits
+  before submission; scores are pending.
+- Current public Code was audited again. Four high-position pages still emit
+  the old cap-2 SHA, while the two new frontier pages share one cap2-plus-0.522
+  output. Those title duplicates are not allocated separate submission slots.
+- The D23 runner-up A31 (`6.546`, ref `54917838`) completed as a detailed
+  English documentation notebook and reproduced the scoring artifact
+  byte-for-byte. Kaggle currently blocks making any notebook with this
+  competition source public until the competition ends, so it remains
+  private and ready for the permitted publication date; it will never be
+  competition-submitted.
+- Detailed evidence: [2026-07-24 results](docs/RESULTS_2026-07-24.md)
 
 ## Current validated status (2026-07-21)
 
