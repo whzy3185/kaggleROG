@@ -1,5 +1,21 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest active checkpoint - 2026-07-25
+
+- D24 final scores are `6.539 / 6.528 / 6.549 / 6.511 / 6.525` for refs
+  `54941181 / 54941242 / 54941455 / 54941513 / 54941756`. D23 A27 remains
+  the repository best at `6.476`.
+- D25 began at exactly `0 / 5`. Five routes were pre-registered: exact
+  current-source A28+DYNQ0522 and GS1.30+Q0522 reproductions, plus A27
+  smoothing windows `15/7`, windows `61/21`, and clip `0.25`.
+- D25 is final at exactly `5 / 5`: refs `54966176 / 54966324 / 54966407 /
+  54966525 / 54966580`. Scores are pending; do not make another competition
+  submission or submit a later Code version.
+- All five own private Version 1 outputs passed the 14,151-row ordered-ID,
+  finite-value, SHA-256, distance, pairwise non-duplicate, and fatal-log
+  audits. Full hashes are recorded in `docs/RESULTS_2026-07-25.md`.
+- No automation or recurring task is active or should be created.
+
 ## Latest active checkpoint - 2026-07-24
 
 - D23 final scored results are A27 `6.476`, A31 `6.546`, A27 plus WellBias

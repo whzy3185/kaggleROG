@@ -29,7 +29,8 @@
   0.15`, plus weights `0.10 / 0.12` crossed with the A31-derived zero-mean
   0.18 ft Heel-to-Toe tilt. All five own outputs passed ordered-ID,
   finite-value, SHA-256, controlled-distance, non-duplicate, and log audits
-  before submission; scores are pending.
+  before submission. Scores were `6.539 / 6.528 / 6.549 / 6.511 / 6.525`;
+  the D23 A27 record remains `6.476`.
 - Current public Code was audited again. Four high-position pages still emit
   the old cap-2 SHA, while the two new frontier pages share one cap2-plus-0.522
   output. Those title duplicates are not allocated separate submission slots.
@@ -40,6 +41,21 @@
   private and ready for the permitted publication date; it will never be
   competition-submitted.
 - Detailed evidence: [2026-07-24 results](docs/RESULTS_2026-07-24.md)
+
+## Current experiment status (2026-07-25)
+
+- The D25 budget is final at exactly `5 / 5`: refs `54966176 / 54966324 /
+  54966407 / 54966525 / 54966580`. The pre-registered grid contains two
+  current-source routes (GS1.30 plus Q0522 and A28 plus dynamic Q0522) and
+  three A27 shape ablations: smoothing windows `15/7`, smoothing windows
+  `61/21`, and a 0.25-ft clip. Scores are pending.
+- Ten current high-position Code outputs were audited. Four were byte-identical
+  cap2, two were byte-identical Q0522, and only the A28/frontier branches
+  contributed genuinely new full-vector outputs.
+- Every D25 slot used its own private Version 1 only after it passed the
+  14,151-row ordered-ID, finite-value, SHA-256, distance, non-duplicate, and
+  fatal-log audits. No later Code version may be competition-submitted.
+- Detailed evidence: [2026-07-25 results](docs/RESULTS_2026-07-25.md)
 
 ## Current validated status (2026-07-21)
 
