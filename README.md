@@ -48,7 +48,9 @@
   54966407 / 54966525 / 54966580`. The pre-registered grid contains two
   current-source routes (GS1.30 plus Q0522 and A28 plus dynamic Q0522) and
   three A27 shape ablations: smoothing windows `15/7`, smoothing windows
-  `61/21`, and a 0.25-ft clip. Scores are pending.
+  `61/21`, and a 0.25-ft clip. The measured scores were `6.547 / 6.469 /
+  unavailable / 6.485 / 6.536`; A27 `15/7` established the new repository
+  best at **`6.469`**.
 - Ten current high-position Code outputs were audited. Four were byte-identical
   cap2, two were byte-identical Q0522, and only the A28/frontier branches
   contributed genuinely new full-vector outputs.
@@ -56,6 +58,22 @@
   14,151-row ordered-ID, finite-value, SHA-256, distance, non-duplicate, and
   fatal-log audits. No later Code version may be competition-submitted.
 - Detailed evidence: [2026-07-25 results](docs/RESULTS_2026-07-25.md)
+
+## Current experiment status (2026-07-26)
+
+- The D26 budget is final at exactly `5 / 5`: refs `54988991 / 54988992 /
+  54988994 / 54989268 / 54989315`. Four A27 smoothing routes were
+  pre-registered around the measured `15/7` optimum: `7/3`, `11/5`, `13/7`,
+  and `19/9`. They retain weight 0.10 and the measured 0.35-ft clip.
+- A fresh public-Code audit found the new A28/Q0522 50:50 pair blend as the
+  only distinct late update. Its source report references `6.433`, but D26
+  inherits no score claim; our run-local output differed from the public-run
+  artifact and is recorded under its own SHA. Exact cap2 and Q0522 duplicates
+  were excluded before submission.
+- All five own Version 1 outputs passed ordered-ID, finite-value, SHA-256,
+  controlled-distance, pairwise non-duplicate, and fatal-log audits. Scores
+  are pending; no later Code version may be competition-submitted.
+- Detailed evidence: [2026-07-26 results](docs/RESULTS_2026-07-26.md)
 
 ## Current validated status (2026-07-21)
 

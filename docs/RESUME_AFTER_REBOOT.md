@@ -1,5 +1,18 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest active checkpoint - 2026-07-26
+
+- D25 scores are `6.547 / 6.469 / unavailable / 6.485 / 6.536`; A27 `15/7`
+  is the repository best.
+- D26 is final at exactly `5 / 5`: refs `54988991 / 54988992 / 54988994 /
+  54989268 / 54989315`. The routes are the current A28/Q0522 50:50 pair
+  blend and A27 smoothing `7/3`, `11/5`, `13/7`, and `19/9`; scores are
+  pending.
+- All five own Version 1 outputs passed the 14,151-row ordered-ID,
+  finite-value, SHA-256, distance, pairwise non-duplicate, and fatal-log
+  audits. Do not make another D26 competition submission.
+- No automation or recurring task is active or should be created.
+
 ## Latest active checkpoint - 2026-07-25
 
 - D24 final scores are `6.539 / 6.528 / 6.549 / 6.511 / 6.525` for refs
@@ -9,8 +22,9 @@
   current-source A28+DYNQ0522 and GS1.30+Q0522 reproductions, plus A27
   smoothing windows `15/7`, windows `61/21`, and clip `0.25`.
 - D25 is final at exactly `5 / 5`: refs `54966176 / 54966324 / 54966407 /
-  54966525 / 54966580`. Scores are pending; do not make another competition
-  submission or submit a later Code version.
+  54966525 / 54966580`. Scores are `6.547 / 6.469 / unavailable / 6.485 /
+  6.536`; A27 `15/7` is the new repository best. Do not submit a later D25
+  Code version.
 - All five own private Version 1 outputs passed the 14,151-row ordered-ID,
   finite-value, SHA-256, distance, pairwise non-duplicate, and fatal-log
   audits. Full hashes are recorded in `docs/RESULTS_2026-07-25.md`.
