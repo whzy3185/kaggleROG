@@ -1,13 +1,33 @@
 # Resume checkpoint — 2026-07-17
 
+## Latest active checkpoint - 2026-07-27
+
+- D27 is final at exactly `5 / 5`: refs `55015407 / 55015697 / 55015700 /
+  55015791 / 55015938` are exact Frontier II, residual post-contact, Beam
+  posterior without contact overwrite, adaptive branch gating, and six-contact
+  consensus. All five scores are pending.
+- Their final SHA prefixes are
+  `bf48603d / 0a7c4348 / 4c364a6b / 685dd480 / 50392181`;
+  every own private Version 1 passed 14,151-row ordered-ID, finite-value,
+  matching final SHA, pairwise-distance, and fatal-log audits.
+- The first residual draft was rejected without submission because the contact
+  guard made it byte-identical to slot 1. Contact consensus R1 was also
+  rejected before submission for missing the `0.969 ft` A27-distance gate.
+- Six-contact R2 measured `0.989646 ft` from D25 A27 and at least `3.325162 ft`
+  from the other three structural routes. Do not make another D27 competition
+  submission and do not create an automation.
+
 ## Latest active checkpoint - 2026-07-26
 
 - D25 scores are `6.547 / 6.469 / unavailable / 6.485 / 6.536`; A27 `15/7`
   is the repository best.
 - D26 is final at exactly `5 / 5`: refs `54988991 / 54988992 / 54988994 /
   54989268 / 54989315`. The routes are the current A28/Q0522 50:50 pair
-  blend and A27 smoothing `7/3`, `11/5`, `13/7`, and `19/9`; scores are
-  pending.
+  blend and A27 smoothing `7/3`, `11/5`, `13/7`, and `19/9`; final scores are
+  `unavailable / 6.555 / 6.563 / 6.593 / 6.530`.
+- D26 did not improve the `6.469` D25 record. Retire A27 smoothing-window
+  micro-grids and reserve future slots for hidden-run-compatible structural
+  mechanisms.
 - All five own Version 1 outputs passed the 14,151-row ordered-ID,
   finite-value, SHA-256, distance, pairwise non-duplicate, and fatal-log
   audits. Do not make another D26 competition submission.

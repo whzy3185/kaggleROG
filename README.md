@@ -71,9 +71,34 @@
   artifact and is recorded under its own SHA. Exact cap2 and Q0522 duplicates
   were excluded before submission.
 - All five own Version 1 outputs passed ordered-ID, finite-value, SHA-256,
-  controlled-distance, pairwise non-duplicate, and fatal-log audits. Scores
-  are pending; no later Code version may be competition-submitted.
+  controlled-distance, pairwise non-duplicate, and fatal-log audits. The four
+  scored A27 routes measured `6.555 / 6.563 / 6.593 / 6.530`; the pair blend
+  completed without a displayed score. None beat D25 A27 `15/7` at `6.469`,
+  so further smoothing-window micro-grids are retired. No later Code version
+  may be competition-submitted.
 - Detailed evidence: [2026-07-26 results](docs/RESULTS_2026-07-26.md)
+
+## Current experiment status (2026-07-27)
+
+- D27 reserves one slot for an exact current-source reproduction of prvsiyan's
+  Frontier II page and four slots for hidden-run-compatible structural routes:
+  residual post-contact, GR datum posterior, adaptive branch gating, and a
+  six-formation contact consensus.
+- The exact reproduction matched the downloaded public artifact byte-for-byte
+  (SHA-256 `bf48603d...add8`) and was submitted as ref `55015407`.
+- Residual post-contact, Beam posterior without contact overwrite, and the
+  adaptive branch gate passed all output contracts and were submitted as refs
+  `55015697 / 55015700 / 55015791`. Their visible outputs are respectively
+  `5.275397 / 3.306169 / 3.031769 ft` from the D25 A27 record and are pairwise
+  materially distinct.
+- A pre-contact residual draft was rejected without submission because the
+  contact guard made it byte-identical to the exact reproduction. A sub-floor
+  contact draft was also rejected. Six-contact consensus R2 passed at
+  `0.989646 ft` from A27 and was submitted as ref `55015938`.
+- D27 is final at exactly `5 / 5`: refs `55015407 / 55015697 / 55015700 /
+  55015791 / 55015938`. All five scores are pending; no later Code version may
+  be competition-submitted.
+- Detailed evidence: [2026-07-27 results](docs/RESULTS_2026-07-27.md)
 
 ## Current validated status (2026-07-21)
 
