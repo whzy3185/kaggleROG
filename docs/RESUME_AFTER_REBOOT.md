@@ -1,11 +1,29 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-07-27
+## Latest active checkpoint - 2026-07-28
+
+- D28 is final at exactly `5 / 5`: refs `55046933 / 55047312 / 55047700 /
+  55048063 / 55048532` are the Leonid current-source exact reproduction,
+  A27+Q0522, A27+U-continuity8, A27 PF192/P650, and the full
+  PF192/Q0522/U-continuity interaction. All five scores are pending.
+- Final SHA prefixes are
+  `b192d3f3 / c849b77d / bb854d36 / 7d392f8b / 64f31ba4`.
+  Every accepted private Version 1 passed 14,151-row sample-order, unique-ID,
+  finite-value, final-SHA, pairwise-distance, and fatal-log audits.
+- The initial high-resolution drafts failed the stale A27 source-prediction
+  SHA guard and were rejected without competition submission. Corrected R1
+  retained the guard and pinned the independently observed high-resolution
+  source prediction SHA.
+- The five competition submissions were spaced by at least 20 minutes. Do not
+  make another D28 submission, do not submit a later documentation version,
+  and do not create an automation.
+
+## Latest completed checkpoint - 2026-07-27
 
 - D27 is final at exactly `5 / 5`: refs `55015407 / 55015697 / 55015700 /
   55015791 / 55015938` are exact Frontier II, residual post-contact, Beam
   posterior without contact overwrite, adaptive branch gating, and six-contact
-  consensus. All five scores are pending.
+  consensus. Final scores are `7.513 / 7.570 / 8.152 / 7.661 / 7.504`.
 - Their final SHA prefixes are
   `bf48603d / 0a7c4348 / 4c364a6b / 685dd480 / 50392181`;
   every own private Version 1 passed 14,151-row ordered-ID, finite-value,
@@ -16,6 +34,8 @@
 - Six-contact R2 measured `0.989646 ft` from D25 A27 and at least `3.325162 ft`
   from the other three structural routes. Do not make another D27 competition
   submission and do not create an automation.
+- None of the D27 routes improved D25 A27 `15/7` at `6.469`. Retire the D27
+  residual, Beam-posterior, adaptive-gate, and broad-contact routes.
 
 ## Latest active checkpoint - 2026-07-26
 

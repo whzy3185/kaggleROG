@@ -96,9 +96,32 @@
   contact draft was also rejected. Six-contact consensus R2 passed at
   `0.989646 ft` from A27 and was submitted as ref `55015938`.
 - D27 is final at exactly `5 / 5`: refs `55015407 / 55015697 / 55015700 /
-  55015791 / 55015938`. All five scores are pending; no later Code version may
-  be competition-submitted.
+  55015791 / 55015938` scored `7.513 / 7.570 / 8.152 / 7.661 / 7.504`.
+  Every structural departure regressed against D25 A27 `15/7` at `6.469`;
+  the D27 residual, posterior, adaptive-gate, and broad-contact routes are
+  retired. No later Code version may be competition-submitted.
 - Detailed evidence: [2026-07-27 results](docs/RESULTS_2026-07-27.md)
+
+## Current experiment status (2026-07-28)
+
+- D28 is final at exactly `5 / 5`: refs `55046933 / 55047312 / 55047700 /
+  55048063 / 55048532`. The routes are an exact current-source reproduction of
+  Leonid's claimed `6.213` page, A27 `15/7` plus dynamic Q0522, A27 plus
+  U-continuity8, A27 with a 192-seed/650-particle PF ensemble, and the
+  high-resolution PF/Q0522/U-continuity interaction. All scores are pending.
+- The exact reproduction emitted the old cap2 artifact byte-for-byte
+  (`b192d3f3...ded4a`). The upstream `6.213` title is not inherited; this
+  account will record only ref `55046933`'s own score.
+- All five accepted private Version 1 outputs passed the 14,151-row ordered-ID,
+  finite-value, matching final SHA, pairwise-distance, and fatal-log audits.
+  Successive competition submissions were separated by at least 20 minutes.
+- The initial high-resolution drafts were rejected without submission because
+  the old A27 source SHA guard correctly detected the changed PF anchor. R1
+  preserved the guard and pinned the independently observed high-resolution
+  prediction SHA; it did not weaken the contract.
+- No additional D28 competition submission or later documentation rerun is
+  allowed.
+- Detailed evidence: [2026-07-28 results](docs/RESULTS_2026-07-28.md)
 
 ## Current validated status (2026-07-21)
 
