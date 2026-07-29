@@ -102,16 +102,38 @@
   retired. No later Code version may be competition-submitted.
 - Detailed evidence: [2026-07-27 results](docs/RESULTS_2026-07-27.md)
 
-## Current experiment status (2026-07-28)
+## Current experiment status (2026-07-29)
+
+- D29 is final at exactly `5 / 5`: refs
+  `55072903 / 55073402 / 55073985 / 55074584 / 55075184` are the A27
+  `15/7` stochastic refresh, positive half-Q, negative half-Q, non-branch
+  shape R1, and boundary soft80 R1. They were submitted from audited private
+  Code v1 at
+  `05:28:41.713 / 05:59:45.267 / 06:30:48.863 / 07:02:04.400 /
+  07:33:20.520 UTC`.
+- Adjacent gaps are
+  `31:03.554 / 31:03.596 / 31:15.537 / 31:16.120`; the minimum is
+  `31:03.554`. All scores are currently pending. No additional D29 submission
+  or later documentation rerun is allowed.
+- All five candidate files contain exactly 14,151 sample-ordered unique IDs,
+  finite predictions, matching embedded SHA-256 values, pairwise-distinct
+  vectors, and fatal-marker-free logs.
+- The first non-branch and boundary workers encountered a transient empty
+  competition mount and were rejected without submission. Their private R1
+  slugs completed with unchanged mechanisms and full guards.
+- Detailed evidence: [2026-07-29 results](docs/RESULTS_2026-07-29.md)
+
+## Completed experiment status (2026-07-28)
 
 - D28 is final at exactly `5 / 5`: refs `55046933 / 55047312 / 55047700 /
   55048063 / 55048532`. The routes are an exact current-source reproduction of
   Leonid's claimed `6.213` page, A27 `15/7` plus dynamic Q0522, A27 plus
   U-continuity8, A27 with a 192-seed/650-particle PF ensemble, and the
-  high-resolution PF/Q0522/U-continuity interaction. All scores are pending.
+  high-resolution PF/Q0522/U-continuity interaction. The first three scores
+  are `6.520 / 6.486 / 6.576`; the last two completed without public scores.
 - The exact reproduction emitted the old cap2 artifact byte-for-byte
   (`b192d3f3...ded4a`). The upstream `6.213` title is not inherited; this
-  account will record only ref `55046933`'s own score.
+  account measured ref `55046933` at `6.520`.
 - All five accepted private Version 1 outputs passed the 14,151-row ordered-ID,
   finite-value, matching final SHA, pairwise-distance, and fatal-log audits.
   Successive competition submissions were separated by at least 20 minutes.

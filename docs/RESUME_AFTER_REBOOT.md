@@ -1,11 +1,34 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-07-28
+## Latest active checkpoint - 2026-07-29
+
+- D29 is final at exactly `5 / 5`: refs
+  `55072903 / 55073402 / 55073985 / 55074584 / 55075184` are the A27
+  refresh, positive half-Q, negative half-Q, non-branch shape R1, and boundary
+  soft80 R1.
+- Code-submission times are
+  `05:28:41.713 / 05:59:45.267 / 06:30:48.863 / 07:02:04.400 /
+  07:33:20.520 UTC`; adjacent gaps are
+  `31:03.554 / 31:03.596 / 31:15.537 / 31:16.120`.
+- Every candidate passed the 14,151-row ordered unique-ID, finite-value,
+  final-SHA, pairwise-distance, and fatal-log contracts. SHA prefixes are
+  `c5f7a180 / 0c035377 / 64304abf / 51d31770 / e6ff45e7`.
+- All five scores are pending. Do not make another D29 submission or submit a
+  later documentation version. The competition now accepts Notebook
+  submissions only; `scripts/submit_code_version.py` records the required
+  official Code endpoint for future dates.
+- The first non-branch and boundary workers failed on transient empty
+  competition mounts and were rejected without competition submission. Their
+  R1 slugs completed successfully. Do not create an automation.
+- Detailed evidence: [2026-07-29 results](RESULTS_2026-07-29.md)
+
+## Latest completed checkpoint - 2026-07-28
 
 - D28 is final at exactly `5 / 5`: refs `55046933 / 55047312 / 55047700 /
   55048063 / 55048532` are the Leonid current-source exact reproduction,
   A27+Q0522, A27+U-continuity8, A27 PF192/P650, and the full
-  PF192/Q0522/U-continuity interaction. All five scores are pending.
+  PF192/Q0522/U-continuity interaction. Scores are
+  `6.520 / 6.486 / 6.576 / unavailable / unavailable`.
 - Final SHA prefixes are
   `b192d3f3 / c849b77d / bb854d36 / 7d392f8b / 64f31ba4`.
   Every accepted private Version 1 passed 14,151-row sample-order, unique-ID,
