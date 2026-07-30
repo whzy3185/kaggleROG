@@ -1,6 +1,30 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-07-29
+## Latest active checkpoint - 2026-07-30
+
+- D30 is final at exactly `5 / 5`: refs
+  `55096121 / 55096688 / 55097369 / 55097978 / 55098546` are prefix-U drift,
+  GS1.60 isolated, GS1.60 plus the measured non-branch delta, dual PF seed
+  bank, and non-branch plus same-sign drift.
+- Kaggle UTC times are
+  `01:30:27.627 / 02:02:43.047 / 02:34:32.193 / 03:06:26.123 /
+  03:38:16.510`; gaps are
+  `32:15.420 / 31:49.146 / 31:53.930 / 31:50.387`.
+- SHA prefixes are
+  `398d3861 / 1591f9eb / 8c06f9a0 / dd17de2d / f02b823a`. Every accepted
+  private Version 1 passed the 14,151-row inherited sample-order, unique-ID,
+  finite-value, pairwise-distance, matching-SHA, and fatal-log contracts.
+- Slots 3 and 5 completed without displayed public scores; refs 1, 2, and 4
+  were pending at the final checkpoint. Poll them without resubmission.
+- The current public-source control was rejected as known duplicate SHA
+  `83284877...`. Two full refresh workers failed on an empty Kaggle `train`
+  mount and consumed no slots; lightweight CPU R1 notebooks recovered the
+  planned interaction tests using exact audited private-parent SHAs.
+- Do not make another D30 submission, submit a later documentation version, or
+  create an automation. Detailed evidence:
+  [2026-07-30 results](RESULTS_2026-07-30.md)
+
+## Latest completed checkpoint - 2026-07-29
 
 - D29 is final at exactly `5 / 5`: refs
   `55072903 / 55073402 / 55073985 / 55074584 / 55075184` are the A27
@@ -13,7 +37,9 @@
 - Every candidate passed the 14,151-row ordered unique-ID, finite-value,
   final-SHA, pairwise-distance, and fatal-log contracts. SHA prefixes are
   `c5f7a180 / 0c035377 / 64304abf / 51d31770 / e6ff45e7`.
-- All five scores are pending. Do not make another D29 submission or submit a
+- Scores are `6.541 / 6.517 / 6.560 / 6.455 / 6.530`. Non-branch shape is
+  the D29 best and improves D25 A27 by `0.014`, below the `0.030`
+  parent-promotion threshold. Do not make another D29 submission or submit a
   later documentation version. The competition now accepts Notebook
   submissions only; `scripts/submit_code_version.py` records the required
   official Code endpoint for future dates.

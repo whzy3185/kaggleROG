@@ -102,7 +102,30 @@
   retired. No later Code version may be competition-submitted.
 - Detailed evidence: [2026-07-27 results](docs/RESULTS_2026-07-27.md)
 
-## Current experiment status (2026-07-29)
+## Current experiment status (2026-07-30)
+
+- D30 is final at exactly `5 / 5`: refs
+  `55096121 / 55096688 / 55097369 / 55097978 / 55098546` are prefix-U drift,
+  GS1.60 isolated, GS1.60 plus the measured non-branch delta, dual PF seed
+  bank, and non-branch plus same-sign drift.
+- Kaggle UTC timestamps are
+  `01:30:27.627 / 02:02:43.047 / 02:34:32.193 / 03:06:26.123 /
+  03:38:16.510`; adjacent gaps are
+  `32:15.420 / 31:49.146 / 31:53.930 / 31:50.387`. The minimum is
+  `31:49.146`, so every pair is strictly more than 30 minutes apart.
+- Every accepted private Version 1 contains exactly 14,151 ordered unique IDs,
+  finite predictions, a matching final SHA-256, a nonduplicate vector, and no
+  fatal log marker. Slots 3 and 5 completed without displayed scores; slots
+  1, 2, and 4 remain pending.
+- The current public-source control was rejected because its SHA
+  `83284877...` was already measured. Two full refresh workers failed on an
+  empty Kaggle `train` mount and consumed no competition slots; their two
+  intended interactions were recovered as fail-closed lightweight R1
+  notebooks pinned to exact audited parent SHAs.
+- No additional D30 competition submission or later documentation rerun is
+  permitted. Detailed evidence: [2026-07-30 results](docs/RESULTS_2026-07-30.md)
+
+## Completed experiment status (2026-07-29)
 
 - D29 is final at exactly `5 / 5`: refs
   `55072903 / 55073402 / 55073985 / 55074584 / 55075184` are the A27
@@ -113,8 +136,11 @@
   07:33:20.520 UTC`.
 - Adjacent gaps are
   `31:03.554 / 31:03.596 / 31:15.537 / 31:16.120`; the minimum is
-  `31:03.554`. All scores are currently pending. No additional D29 submission
-  or later documentation rerun is allowed.
+  `31:03.554`. Scores are `6.541 / 6.517 / 6.560 / 6.455 / 6.530`.
+  Non-branch shape is the new measured record at **`6.455`**, improving D25
+  A27 by `0.014`; this is below the pre-registered `0.030` parent-promotion
+  threshold. No additional D29 submission or later documentation rerun is
+  allowed.
 - All five candidate files contain exactly 14,151 sample-ordered unique IDs,
   finite predictions, matching embedded SHA-256 values, pairwise-distinct
   vectors, and fatal-marker-free logs.
