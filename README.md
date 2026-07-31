@@ -1,5 +1,28 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current experiment status (2026-07-31)
+
+- D31 treats the public leaderboard as only one quarter of the evaluation
+  set. Single-well `+/-0.25 ft` coordinate probes are excluded; the remaining
+  slate uses pre-registered whole-output risk blends and one previously
+  measured structural delta.
+- Blacklions' public Final Hierarch v6 was reproduced from unchanged modelling
+  code in this account's private Version 1. The upstream and copied modelling
+  code hashes both equal `46b57daa...c9422`; the output file SHA
+  `9196a563...f0c4f` and prediction SHA `f9f96622...de6f1` match the public
+  artifact exactly. The page-reported `6.390` is not inherited as our score.
+- Slot 1 was submitted as ref `55128484` at `05:45:50.743 UTC` and is pending.
+  Today's current budget is `1 / 5`; no second submission is permitted before
+  `06:17:20.743 UTC`.
+- Four additional private Version 1 candidates have passed their 14,151-row
+  ordered-ID, finite-value, SHA-256, pairwise-distance, and fatal-log audits:
+  75/25, 50/50, and 25/75 champion/D29 risk blends, plus champion with the
+  measured D29-minus-D25 non-branch delta.
+- Same-name full `TVT` trajectories in the local cache contradict known
+  leaderboard measurements and are treated as stale/same-well artifacts, not
+  hidden-test labels. Detailed evidence:
+  [2026-07-31 results](docs/RESULTS_2026-07-31.md).
+
 ## Current experiment status (2026-07-23)
 
 - D22 is final: cap `2.0 / 2.5 / 3.0` each scored `6.667`, while cap 2 and

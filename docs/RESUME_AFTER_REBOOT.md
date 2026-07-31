@@ -1,6 +1,28 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-07-30
+## Latest active checkpoint - 2026-07-31
+
+- D31 currently uses exactly `1 / 5`: exact Blacklions Final Hierarch v6
+  private Version 1 was submitted as ref `55128484` at `05:45:50.743 UTC`.
+  It is pending. Do not resubmit it.
+- The copied upstream modelling code hash matches exactly at `46b57daa...`.
+  The downloaded file/prediction SHA prefixes are `9196a563 / f9f96622`,
+  exactly matching the public Version 6 artifact. The public page's claimed
+  `6.390` is not this account's score until ref `55128484` reports it.
+- Earliest Slot 2 time is `06:17:20.743 UTC`. Maintain at least 31 minutes
+  30 seconds between all remaining slots.
+- Four private Version 1 outputs are complete and audited: 75/25, 50/50, and
+  25/75 champion/D29 whole-output risk blends, then champion plus the measured
+  D29-minus-D25 non-branch delta. Submit only these Version 1 artifacts and
+  never a later documentation version.
+- The public leaderboard is treated as one quarter of evaluation. Do not
+  substitute single-well coordinate probes or directions inferred from one
+  small score fluctuation. Same-name full TVT in the local cache is stale or a
+  same-well artifact and is not valid hidden-test truth.
+- Do not create an automation. Detailed evidence:
+  [2026-07-31 results](RESULTS_2026-07-31.md).
+
+## Previous active checkpoint - 2026-07-30
 
 - D30 is final at exactly `5 / 5`: refs
   `55096121 / 55096688 / 55097369 / 55097978 / 55098546` are prefix-U drift,
