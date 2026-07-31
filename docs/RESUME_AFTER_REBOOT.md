@@ -2,19 +2,22 @@
 
 ## Latest active checkpoint - 2026-07-31
 
-- D31 currently uses exactly `1 / 5`: exact Blacklions Final Hierarch v6
-  private Version 1 was submitted as ref `55128484` at `05:45:50.743 UTC`.
-  It is pending. Do not resubmit it.
+- D31 is final at exactly `5 / 5`: refs
+  `55128484 / 55129144 / 55129811 / 55130546 / 55131268` are the exact
+  Blacklions v6 source reproduction, 75/25, 50/50, and 25/75 champion/D29
+  risk blends, and champion plus the measured non-branch delta.
 - The copied upstream modelling code hash matches exactly at `46b57daa...`.
   The downloaded file/prediction SHA prefixes are `9196a563 / f9f96622`,
   exactly matching the public Version 6 artifact. The public page's claimed
   `6.390` is not this account's score until ref `55128484` reports it.
-- Earliest Slot 2 time is `06:17:20.743 UTC`. Maintain at least 31 minutes
-  30 seconds between all remaining slots.
-- Four private Version 1 outputs are complete and audited: 75/25, 50/50, and
-  25/75 champion/D29 whole-output risk blends, then champion plus the measured
-  D29-minus-D25 non-branch delta. Submit only these Version 1 artifacts and
-  never a later documentation version.
+- Kaggle UTC timestamps are
+  `05:45:50.743 / 06:17:56.567 / 06:50:00.277 / 07:21:54.120 /
+  07:53:49.170`; gaps are
+  `32:05.824 / 32:03.710 / 31:53.843 / 31:55.050`.
+- All five private Version 1 outputs completed and passed their audits before
+  submission. Slots 2 through 5 completed without a displayed score; Slot 1
+  was pending at the final checkpoint. Poll without resubmitting.
+- Do not submit another D31 candidate or any later Code version.
 - The public leaderboard is treated as one quarter of evaluation. Do not
   substitute single-well coordinate probes or directions inferred from one
   small score fluctuation. Same-name full TVT in the local cache is stale or a

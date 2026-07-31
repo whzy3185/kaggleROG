@@ -11,9 +11,15 @@
   code hashes both equal `46b57daa...c9422`; the output file SHA
   `9196a563...f0c4f` and prediction SHA `f9f96622...de6f1` match the public
   artifact exactly. The page-reported `6.390` is not inherited as our score.
-- Slot 1 was submitted as ref `55128484` at `05:45:50.743 UTC` and is pending.
-  Today's current budget is `1 / 5`; no second submission is permitted before
-  `06:17:20.743 UTC`.
+- D31 is final at exactly `5 / 5`: refs
+  `55128484 / 55129144 / 55129811 / 55130546 / 55131268` are the exact
+  public-source reproduction, 75/25, 50/50, and 25/75 whole-output risk
+  blends, and champion plus the measured non-branch delta.
+- Kaggle UTC timestamps are
+  `05:45:50.743 / 06:17:56.567 / 06:50:00.277 / 07:21:54.120 /
+  07:53:49.170`; adjacent gaps are
+  `32:05.824 / 32:03.710 / 31:53.843 / 31:55.050`. The minimum exceeds
+  30 minutes.
 - Four additional private Version 1 candidates have passed their 14,151-row
   ordered-ID, finite-value, SHA-256, pairwise-distance, and fatal-log audits:
   75/25, 50/50, and 25/75 champion/D29 risk blends, plus champion with the
@@ -22,6 +28,9 @@
   leaderboard measurements and are treated as stale/same-well artifacts, not
   hidden-test labels. Detailed evidence:
   [2026-07-31 results](docs/RESULTS_2026-07-31.md).
+- Slots 2 through 5 completed without a displayed public score; Slot 1 was
+  still pending at the final checkpoint. Do not resubmit any D31 ref or submit
+  a later Code version.
 
 ## Current experiment status (2026-07-23)
 
