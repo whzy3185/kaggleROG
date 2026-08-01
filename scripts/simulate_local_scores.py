@@ -21,6 +21,7 @@ from rogii.local_score import (  # noqa: E402
     analyze_package,
     load_baseline_package,
     load_gbdt_gate_package,
+    load_geoanchor_learned_package,
     load_neighbor_field_package,
     load_neighbor_package,
     load_particle_package,
@@ -161,6 +162,14 @@ def main() -> int:
         packages.append(
             (load_particle_historical_package(historical_particle_path, metadata), "anchor")
         )
+    geoanchor_oof_path = (
+        REPO_ROOT
+        / "artifacts"
+        / "geoanchor_learned_oof_20260801"
+        / "geoanchor_learned_oof_detail.csv"
+    )
+    if geoanchor_oof_path.exists():
+        packages.append((load_geoanchor_learned_package(geoanchor_oof_path, metadata), "anchor"))
     summaries = [
         analyze_package(
             frame,

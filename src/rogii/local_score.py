@@ -259,6 +259,20 @@ def load_gbdt_gate_package(path: Path, metadata: pd.DataFrame) -> pd.DataFrame:
     return _finalize_tidy(pd.concat(rows, ignore_index=True), metadata)
 
 
+def load_geoanchor_learned_package(path: Path, metadata: pd.DataFrame) -> pd.DataFrame:
+    """Load the exact public base/Ridge OOF replay, excluding LB-derived layers."""
+
+    return _load_wide_rmse_package(
+        path,
+        metadata,
+        package="geoanchor_public_learned_oof",
+        validation_scope=(
+            "773-well exact saved base OOF plus grouped Ridge replay; warm-up candidate "
+            "excludes the unavailable 0.09 PF blend and all later leaderboard-derived layers"
+        ),
+    )
+
+
 def pooled_rmse(frame: pd.DataFrame) -> float:
     return math.sqrt(float(frame["sse"].sum()) / int(frame["n_eval"].sum()))
 

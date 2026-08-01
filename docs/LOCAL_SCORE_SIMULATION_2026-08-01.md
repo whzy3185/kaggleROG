@@ -121,6 +121,63 @@ test rows. The Pearson correlation between their RMS output distance from the
 D25 parent and public score is only 0.1285 with five observations. Output
 distance is therefore a diversity/sanity diagnostic, not a score proxy.
 
+## GeoAnchor learned-core connection
+
+The public artifact bundle's five serialized trainers were downloaded locally
+and their stored row-level OOF vectors were connected to the simulator. The
+local suffix index contains 3,783,989 rows from all 773 wells. Every trainer's
+recomputed RMSE matches its stored `overall_score` within `3.7e-9`, which is a
+strong row-order and target-alignment check.
+
+| Candidate | Full 773-well OOF RMSE |
+|---|---:|
+| LightGBM 1 | 10.7668 |
+| LightGBM 2 | 10.4852 |
+| LightGBM 3 | 10.4733 |
+| CatBoost 1 | 10.5750 |
+| CatBoost 2 | 10.5550 |
+| Exact grouped positive Ridge | 10.4173 |
+| Ridge plus 85-ft warm-up, without saved PF | **10.4153** |
+
+For the warm-up candidate, complete-well bootstrap resampling gives a 52-well
+median of 9.8321 with a 90% interval of [7.9745, 13.7049], and a 148-well
+median of 10.2216 with a 90% interval of [8.7787, 12.3233]. These distributions
+describe sampling variation of the learned OOF core. They are not estimates of
+the current hidden leaderboard score.
+
+The connection deliberately excludes the unavailable saved 9% PF feature,
+selector/projection/visible-prefix transactions, guarded same-well contact
+override, and the R2000 single-test-well correction. In particular, R2000 was
+derived algebraically from public leaderboard responses for one named test
+well and has no train-fold analogue. Therefore the reported public 5.x result
+cannot honestly be converted into a 5.x local OOF estimate. The measurable
+core is around 10.4; the remaining public gain is concentrated in downstream
+rule/anchor transactions that still need deployment-parity, target-safe OOF.
+
+The guarded-contact layer was then audited separately. If EGFDU is used from
+each training horizontal file and its offset is fitted only on `TVT_input`, it
+scores 0.006994 on all 3,783,989 held-out suffix rows. That number is **not a
+valid CV result**: EGFDU and the other formation columns exist in the train
+horizontal files but are absent from every test horizontal file.
+
+The actual 6.568 anchor instead reads the overlapping full training well,
+including its full `TVT` and EGFDU trajectory, then interpolates that trajectory
+onto the three test-well MD grids. The local audit reconstructed all 14,151
+anchor predictions with RMS difference `1.57e-12` and maximum absolute
+difference `3.64e-12`. This exactly connects the scored anchor to the source
+transaction while proving why the tempting near-zero train score is not a
+leaderboard forecast. The measured 6.568 public score is the best calibration
+for this transductive contact route; the remaining test-suffix residual is not
+observable in ordinary training OOF.
+
+Reproduce the connection with:
+
+```powershell
+E:\anaconda\python.exe scripts\replay_geoanchor_learned_oof.py
+E:\anaconda\python.exe scripts\audit_geoanchor_contact_proxy.py
+E:\anaconda\python.exe scripts\simulate_local_scores.py --iterations 10000
+```
+
 ## Promotion gate for future candidates
 
 A new route should be considered locally supported only when all of the
