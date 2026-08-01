@@ -2,16 +2,20 @@
 
 ## Current experiment status (2026-08-01)
 
-- D32 is exactly `3 / 5` after three materially distinct exact public-Code
-  reproductions: GeoAnchor ref `55159859`, Roman Smartest ref `55160477`, and
-  Tamerlan DET AGI ref `55161022`. Their last confirmed states are `PENDING`;
-  no page-displayed score is inherited as this account's result.
-- All three private outputs passed the 14,151 ordered unique-ID, finite-value,
-  exact public-artifact SHA-256, pairwise-distance, and fatal-log audits. The
-  adjacent submission gaps are `38:44.217` and `31:55.037`.
+- D32 is final at exactly `5 / 5`: exact public-Code reproductions GeoAnchor
+  ref `55159859`, Roman Smartest ref `55160477`, and Tamerlan DET AGI ref
+  `55161022`, followed by Discussion-derived four-way arithmetic consensus ref
+  `55161568` and robust middle-pair consensus ref `55162186`.
+- Every private output passed the 14,151 ordered unique-ID, finite-value,
+  exact-parent SHA-256, pairwise-distance, and fatal-log audits. Adjacent gaps
+  are `38:44.217 / 31:55.037 / 32:00.333 / 34:21.307`.
 - Four differently titled high-score notebooks were rejected because they all
   emitted the already measured SHA `b192d3f3...9ded4`; the D31 Blacklions SHA
-  was also not repeated. Exactly two D32 slots remain untouched.
+  was also not repeated. A proposed anticorrelated hedge was rejected before
+  submission because one visible branch well dominated its change.
+- Slots 1, 2, 3, and 5 were `PENDING` at the final checkpoint; Slot 4 completed
+  without a displayed score. Poll without resubmitting and never submit a
+  later documentation version.
 - Detailed evidence: [2026-08-01 results](docs/RESULTS_2026-08-01.md).
 
 ## Current experiment status (2026-07-31)

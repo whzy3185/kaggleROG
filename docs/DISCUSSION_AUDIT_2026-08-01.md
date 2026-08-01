@@ -53,3 +53,13 @@ An earlier GeoAnchor/Roman anticorrelated hedge completed privately but was
 rejected before competition submission. Although its full-output delta
 correlation was attractive, its visible-test change was dominated by one
 branch well and therefore did not have enough generalization evidence.
+
+## Competition submission ledger
+
+| Slot | Ref | Kaggle UTC | Candidate | Final checkpoint |
+|---:|---:|---|---|---|
+| 4 | `55161568` | `11:58:36.280` | Four-way arithmetic consensus v1 | complete, score unavailable |
+| 5 | `55162186` | `12:32:57.587` | Robust middle-pair consensus v1 | pending |
+
+The gaps from Slot 3 to 4 and Slot 4 to 5 are `32:00.333` and `34:21.307`.
+Both exceed 31 minutes 30 seconds. D32 is final at exactly `5 / 5`.

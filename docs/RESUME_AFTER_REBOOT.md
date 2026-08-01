@@ -2,19 +2,23 @@
 
 ## Latest active checkpoint - 2026-08-01
 
-- D32 is exactly `3 / 5`: refs `55159859 / 55160477 / 55161022` are exact
-  private reproductions of Lucifer19 GeoAnchor, Roman Rozen Smartest, and
-  Tamerlan Omralinov DET AGI. Last confirmed status for all three is
-  `PENDING`; poll without resubmitting.
-- Kaggle UTC times are `10:15:56.693 / 10:54:40.910 / 11:26:35.947`; gaps are
-  `38:44.217 / 31:55.037`.
-- All three outputs contain exactly 14,151 ordered unique IDs, finite values,
+- D32 is final at exactly `5 / 5`: refs
+  `55159859 / 55160477 / 55161022 / 55161568 / 55162186` are exact private
+  reproductions of GeoAnchor, Roman, and Tamerlan, then the Discussion-derived
+  arithmetic and robust middle-pair consensus routes.
+- Kaggle UTC times are
+  `10:15:56.693 / 10:54:40.910 / 11:26:35.947 / 11:58:36.280 /
+  12:32:57.587`; gaps are
+  `38:44.217 / 31:55.037 / 32:00.333 / 34:21.307`.
+- All five outputs contain exactly 14,151 ordered unique IDs, finite values,
   no fatal log markers, and prediction SHA-256 values equal to their public
-  source artifacts. Roman and Tamerlan used private Version 2 only because an
-  audit-only newline escaping bug was fixed before submission.
-- Do not submit any later version of these reproduction notebooks. Exactly two
-  D32 slots remain for later improvement candidates. Do not create an
-  automation. Detailed evidence: [2026-08-01 results](RESULTS_2026-08-01.md).
+  artifacts or fixed parent formulas. Roman and Tamerlan used private Version
+  2 only because an audit-only newline escaping bug was fixed before
+  submission.
+- Slots 1, 2, 3, and 5 were pending at the final checkpoint; Slot 4 completed
+  without a displayed score. Poll without resubmitting. Do not submit any
+  later Code version or create an automation. Detailed evidence:
+  [2026-08-01 results](RESULTS_2026-08-01.md).
 
 ## Previous active checkpoint - 2026-07-31
 
