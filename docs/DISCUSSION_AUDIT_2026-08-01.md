@@ -58,8 +58,13 @@ branch well and therefore did not have enough generalization evidence.
 
 | Slot | Ref | Kaggle UTC | Candidate | Final checkpoint |
 |---:|---:|---|---|---|
-| 4 | `55161568` | `11:58:36.280` | Four-way arithmetic consensus v1 | complete, score unavailable |
-| 5 | `55162186` | `12:32:57.587` | Robust middle-pair consensus v1 | pending |
+| 4 | `55161568` | `11:58:36.280` | Four-way arithmetic consensus v1 | failed: hidden-rerun unhandled error |
+| 5 | `55162186` | `12:32:57.587` | Robust middle-pair consensus v1 | failed: hidden-rerun unhandled error |
 
 The gaps from Slot 3 to 4 and Slot 4 to 5 are `32:00.333` and `34:21.307`.
 Both exceed 31 minutes 30 seconds. D32 is final at exactly `5 / 5`.
+
+Both failures were caused by deployment-parity mistakes: the notebooks used
+fixed 14,151-row public parent files and public-output SHA contracts that do
+not generalize to Kaggle's hidden rerun. Passing the visible output audit was
+not evidence that these notebooks could score.

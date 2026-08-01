@@ -2,10 +2,11 @@
 
 ## Current experiment status (2026-08-01)
 
-- D32 is final at exactly `5 / 5`: exact public-Code reproductions GeoAnchor
-  ref `55159859`, Roman Smartest ref `55160477`, and Tamerlan DET AGI ref
-  `55161022`, followed by Discussion-derived four-way arithmetic consensus ref
-  `55161568` and robust middle-pair consensus ref `55162186`.
+- D32 consumed exactly `5 / 5`, but it is not a completed scoring slate.
+  GeoAnchor ref `55159859`, Roman Smartest ref `55160477`, and Tamerlan DET
+  AGI ref `55161022` are still pending. Four-way arithmetic consensus ref
+  `55161568` and robust middle-pair consensus ref `55162186` both failed with
+  an unhandled error during Kaggle's hidden-data rerun.
 - Every private output passed the 14,151 ordered unique-ID, finite-value,
   exact-parent SHA-256, pairwise-distance, and fatal-log audits. Adjacent gaps
   are `38:44.217 / 31:55.037 / 32:00.333 / 34:21.307`.
@@ -13,9 +14,17 @@
   emitted the already measured SHA `b192d3f3...9ded4`; the D31 Blacklions SHA
   was also not repeated. A proposed anticorrelated hedge was rejected before
   submission because one visible branch well dominated its change.
-- Slots 1, 2, 3, and 5 were `PENDING` at the final checkpoint; Slot 4 completed
-  without a displayed score. Poll without resubmitting and never submit a
-  later documentation version.
+- A complete public/private Code run is not a successful competition result.
+  The decisive fields are `publicScore` and `errorDescription`; the previous
+  status-only audit missed 13 historical failures. See the
+  [submission failure audit](docs/SUBMISSION_FAILURE_AUDIT_2026-08-01.md).
+- Competition submission is now fail-closed. The preflight rejects fixed
+  public row counts, parent `submission.csv` inputs, unbounded runtime changes,
+  source-lineage drift, output/audit hash mismatches, and fatal logs. The
+  submission wrapper then rechecks the exact remote source and output, blocks
+  unresolved refs or any same-day failure, enforces 30-minute spacing and the
+  daily budget, and requires explicit execution. The audited 25/30% recovery
+  outputs remain quarantined because they do not pass this new gate.
 - Detailed evidence: [2026-08-01 results](docs/RESULTS_2026-08-01.md).
 
 ## Current experiment status (2026-07-31)
@@ -46,10 +55,10 @@
   leaderboard measurements and are treated as stale/same-well artifacts, not
   hidden-test labels. Detailed evidence:
   [2026-07-31 results](docs/RESULTS_2026-07-31.md).
-- Slots 2 through 5 completed without a displayed public score. The exact
-  Blacklions reproduction scored `6.507`, not the page-reported `6.390`, and
-  did not beat the D29 `6.455` record. Do not resubmit any D31 ref or submit a
-  later Code version.
+- Slots 2 through 5 failed with an unhandled error during the hidden-data
+  rerun. Only the exact Blacklions reproduction scored (`6.507`, not the
+  page-reported `6.390`); it did not beat the D29 `6.455` record. Do not
+  resubmit any D31 ref or submit a later Code version.
 
 ## Current experiment status (2026-07-23)
 
@@ -62,7 +71,7 @@
 - The D23 budget is final at exactly `5 / 5`: refs `54917836 / 54917838 /
   54918138 / 54918139 / 54918377`. A27 scored **`6.476`**, A31 scored `6.546`,
   A27 plus WellBias scored `6.562`, U-continuity8 scored `6.617`, and A28
-  completed without a published score. A27 is the repository best.
+  failed the hidden-dataset runtime limit. A27 is the repository best.
 - Current high-ranking public Code was audited before reuse. Six differently
   titled notebooks produced the same byte-identical P100 cap-2 artifact, so
   only genuine output changes were admitted to the D23 grid.
@@ -100,7 +109,7 @@
   current-source routes (GS1.30 plus Q0522 and A28 plus dynamic Q0522) and
   three A27 shape ablations: smoothing windows `15/7`, smoothing windows
   `61/21`, and a 0.25-ft clip. The measured scores were `6.547 / 6.469 /
-  unavailable / 6.485 / 6.536`; A27 `15/7` established the new repository
+  hidden-runtime-failure / 6.485 / 6.536`; A27 `15/7` established the new repository
   best at **`6.469`**.
 - Ten current high-position Code outputs were audited. Four were byte-identical
   cap2, two were byte-identical Q0522, and only the A28/frontier branches
@@ -124,7 +133,7 @@
 - All five own Version 1 outputs passed ordered-ID, finite-value, SHA-256,
   controlled-distance, pairwise non-duplicate, and fatal-log audits. The four
   scored A27 routes measured `6.555 / 6.563 / 6.593 / 6.530`; the pair blend
-  completed without a displayed score. None beat D25 A27 `15/7` at `6.469`,
+  failed the hidden-dataset runtime limit. None beat D25 A27 `15/7` at `6.469`,
   so further smoothing-window micro-grids are retired. No later Code version
   may be competition-submitted.
 - Detailed evidence: [2026-07-26 results](docs/RESULTS_2026-07-26.md)
@@ -166,8 +175,9 @@
   `31:49.146`, so every pair is strictly more than 30 minutes apart.
 - Every accepted private Version 1 contains exactly 14,151 ordered unique IDs,
   finite predictions, a matching final SHA-256, a nonduplicate vector, and no
-  fatal log marker. Slots 3 and 5 completed without displayed scores; slots
-  1, 2, and 4 remain pending.
+  fatal log marker in their visible private runs. Slots 1, 2, and 4 scored
+  `6.526 / 6.517 / 6.502`; slots 3 and 5 failed the hidden submission-format
+  check and produced no score.
 - The current public-source control was rejected because its SHA
   `83284877...` was already measured. Two full refresh workers failed on an
   empty Kaggle `train` mount and consumed no competition slots; their two
@@ -207,7 +217,8 @@
   Leonid's claimed `6.213` page, A27 `15/7` plus dynamic Q0522, A27 plus
   U-continuity8, A27 with a 192-seed/650-particle PF ensemble, and the
   high-resolution PF/Q0522/U-continuity interaction. The first three scores
-  are `6.520 / 6.486 / 6.576`; the last two completed without public scores.
+  are `6.520 / 6.486 / 6.576`; the last two exceeded the hidden runtime limit
+  and produced no scores.
 - The exact reproduction emitted the old cap2 artifact byte-for-byte
   (`b192d3f3...ded4a`). The upstream `6.213` title is not inherited; this
   account measured ref `55046933` at `6.520`.

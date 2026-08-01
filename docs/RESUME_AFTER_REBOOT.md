@@ -10,15 +10,26 @@
   `10:15:56.693 / 10:54:40.910 / 11:26:35.947 / 11:58:36.280 /
   12:32:57.587`; gaps are
   `38:44.217 / 31:55.037 / 32:00.333 / 34:21.307`.
-- All five outputs contain exactly 14,151 ordered unique IDs, finite values,
-  no fatal log markers, and prediction SHA-256 values equal to their public
-  artifacts or fixed parent formulas. Roman and Tamerlan used private Version
-  2 only because an audit-only newline escaping bug was fixed before
-  submission.
-- Slots 1, 2, 3, and 5 were pending at the final checkpoint; Slot 4 completed
-  without a displayed score. Poll without resubmitting. Do not submit any
+- All five visible private outputs contained exactly 14,151 ordered unique
+  IDs and finite values, but that visible-output audit did not establish
+  hidden-rerun compatibility. Roman and Tamerlan used private Version 2 only
+  because an audit-only newline escaping bug was fixed before submission.
+- Slots 1, 2, and 3 remain pending. Slots 4 and 5 failed with Kaggle's
+  unhandled hidden-rerun error and produced no score. Poll only the first three
+  without resubmitting. Do not submit any
   later Code version or create an automation. Detailed evidence:
   [2026-08-01 results](RESULTS_2026-08-01.md).
+- Do not use `competition_submit_code` directly. Every future candidate must
+  be a fresh private version that passes
+  `scripts/preflight_competition_submission.py`; only
+  `scripts/submit_code_version.py --gate-report ... --execute` may create a
+  ref. The wrapper fails closed on remote hash drift, unresolved submissions,
+  same-day errors, less than 30 minutes of spacing, or exhausted budget.
+- The 10/15/20/25/30% non-branch outputs all completed and passed visible
+  output/log audits, including fresh 30% SHA `9995106a...8f0`, but none is
+  eligible: the hard gate quarantines the existing versions because their
+  inherited executable audit embeds the public row count. Rebuild a fresh
+  dynamic-contract private version before considering any future slot.
 
 ## Previous active checkpoint - 2026-07-31
 
@@ -34,8 +45,9 @@
   `05:45:50.743 / 06:17:56.567 / 06:50:00.277 / 07:21:54.120 /
   07:53:49.170`; gaps are
   `32:05.824 / 32:03.710 / 31:53.843 / 31:55.050`.
-- All five private Version 1 outputs completed and passed their audits before
-  submission. Slots 2 through 5 completed without a displayed score. The
+- All five private Version 1 visible outputs completed and passed their local
+  audits before submission, but slots 2 through 5 failed Kaggle's hidden
+  rerun and produced no score. The
   exact public-source route measured `6.507`, not its page-reported `6.390`,
   and did not beat D29 `6.455`. Do not resubmit.
 - Do not submit another D31 candidate or any later Code version.
@@ -60,8 +72,8 @@
   `398d3861 / 1591f9eb / 8c06f9a0 / dd17de2d / f02b823a`. Every accepted
   private Version 1 passed the 14,151-row inherited sample-order, unique-ID,
   finite-value, pairwise-distance, matching-SHA, and fatal-log contracts.
-- Slots 3 and 5 completed without displayed public scores; refs 1, 2, and 4
-  were pending at the final checkpoint. Poll them without resubmission.
+- Slots 1, 2, and 4 scored `6.526 / 6.517 / 6.502`. Slots 3 and 5 failed the
+  hidden submission-format check and produced no scores. Do not resubmit them.
 - The current public-source control was rejected as known duplicate SHA
   `83284877...`. Two full refresh workers failed on an empty Kaggle `train`
   mount and consumed no slots; lightweight CPU R1 notebooks recovered the
@@ -100,7 +112,7 @@
   55048063 / 55048532` are the Leonid current-source exact reproduction,
   A27+Q0522, A27+U-continuity8, A27 PF192/P650, and the full
   PF192/Q0522/U-continuity interaction. Scores are
-  `6.520 / 6.486 / 6.576 / unavailable / unavailable`.
+  `6.520 / 6.486 / 6.576 / hidden-runtime-failure / hidden-runtime-failure`.
 - Final SHA prefixes are
   `b192d3f3 / c849b77d / bb854d36 / 7d392f8b / 64f31ba4`.
   Every accepted private Version 1 passed 14,151-row sample-order, unique-ID,
@@ -134,12 +146,12 @@
 
 ## Latest active checkpoint - 2026-07-26
 
-- D25 scores are `6.547 / 6.469 / unavailable / 6.485 / 6.536`; A27 `15/7`
+- D25 scores are `6.547 / 6.469 / hidden-runtime-failure / 6.485 / 6.536`; A27 `15/7`
   is the repository best.
 - D26 is final at exactly `5 / 5`: refs `54988991 / 54988992 / 54988994 /
   54989268 / 54989315`. The routes are the current A28/Q0522 50:50 pair
   blend and A27 smoothing `7/3`, `11/5`, `13/7`, and `19/9`; final scores are
-  `unavailable / 6.555 / 6.563 / 6.593 / 6.530`.
+  `hidden-runtime-failure / 6.555 / 6.563 / 6.593 / 6.530`.
 - D26 did not improve the `6.469` D25 record. Retire A27 smoothing-window
   micro-grids and reserve future slots for hidden-run-compatible structural
   mechanisms.
@@ -157,7 +169,7 @@
   current-source A28+DYNQ0522 and GS1.30+Q0522 reproductions, plus A27
   smoothing windows `15/7`, windows `61/21`, and clip `0.25`.
 - D25 is final at exactly `5 / 5`: refs `54966176 / 54966324 / 54966407 /
-  54966525 / 54966580`. Scores are `6.547 / 6.469 / unavailable / 6.485 /
+  54966525 / 54966580`. Scores are `6.547 / 6.469 / hidden-runtime-failure / 6.485 /
   6.536`; A27 `15/7` is the new repository best. Do not submit a later D25
   Code version.
 - All five own private Version 1 outputs passed the 14,151-row ordered-ID,
@@ -168,7 +180,8 @@
 ## Latest active checkpoint - 2026-07-24
 
 - D23 final scored results are A27 `6.476`, A31 `6.546`, A27 plus WellBias
-  `6.562`, and U-continuity8 `6.617`. A28 completed without a public score.
+  `6.562`, and U-continuity8 `6.617`. A28 exceeded the hidden runtime limit
+  and produced no score.
   Refs are `54917836 / 54917838 / 54918138 / 54918139 / 54918377`.
 - A27 is the repository best; A31 is the selected scored runner-up for an
   English public Code edition. Never submit the later public version.
