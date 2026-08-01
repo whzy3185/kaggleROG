@@ -1,6 +1,22 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-07-31
+## Latest active checkpoint - 2026-08-01
+
+- D32 is exactly `3 / 5`: refs `55159859 / 55160477 / 55161022` are exact
+  private reproductions of Lucifer19 GeoAnchor, Roman Rozen Smartest, and
+  Tamerlan Omralinov DET AGI. Last confirmed status for all three is
+  `PENDING`; poll without resubmitting.
+- Kaggle UTC times are `10:15:56.693 / 10:54:40.910 / 11:26:35.947`; gaps are
+  `38:44.217 / 31:55.037`.
+- All three outputs contain exactly 14,151 ordered unique IDs, finite values,
+  no fatal log markers, and prediction SHA-256 values equal to their public
+  source artifacts. Roman and Tamerlan used private Version 2 only because an
+  audit-only newline escaping bug was fixed before submission.
+- Do not submit any later version of these reproduction notebooks. Exactly two
+  D32 slots remain for later improvement candidates. Do not create an
+  automation. Detailed evidence: [2026-08-01 results](RESULTS_2026-08-01.md).
+
+## Previous active checkpoint - 2026-07-31
 
 - D31 is final at exactly `5 / 5`: refs
   `55128484 / 55129144 / 55129811 / 55130546 / 55131268` are the exact
@@ -15,8 +31,9 @@
   07:53:49.170`; gaps are
   `32:05.824 / 32:03.710 / 31:53.843 / 31:55.050`.
 - All five private Version 1 outputs completed and passed their audits before
-  submission. Slots 2 through 5 completed without a displayed score; Slot 1
-  was pending at the final checkpoint. Poll without resubmitting.
+  submission. Slots 2 through 5 completed without a displayed score. The
+  exact public-source route measured `6.507`, not its page-reported `6.390`,
+  and did not beat D29 `6.455`. Do not resubmit.
 - Do not submit another D31 candidate or any later Code version.
 - The public leaderboard is treated as one quarter of evaluation. Do not
   substitute single-well coordinate probes or directions inferred from one

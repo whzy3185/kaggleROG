@@ -1,5 +1,19 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current experiment status (2026-08-01)
+
+- D32 is exactly `3 / 5` after three materially distinct exact public-Code
+  reproductions: GeoAnchor ref `55159859`, Roman Smartest ref `55160477`, and
+  Tamerlan DET AGI ref `55161022`. Their last confirmed states are `PENDING`;
+  no page-displayed score is inherited as this account's result.
+- All three private outputs passed the 14,151 ordered unique-ID, finite-value,
+  exact public-artifact SHA-256, pairwise-distance, and fatal-log audits. The
+  adjacent submission gaps are `38:44.217` and `31:55.037`.
+- Four differently titled high-score notebooks were rejected because they all
+  emitted the already measured SHA `b192d3f3...9ded4`; the D31 Blacklions SHA
+  was also not repeated. Exactly two D32 slots remain untouched.
+- Detailed evidence: [2026-08-01 results](docs/RESULTS_2026-08-01.md).
+
 ## Current experiment status (2026-07-31)
 
 - D31 treats the public leaderboard as only one quarter of the evaluation
@@ -28,9 +42,10 @@
   leaderboard measurements and are treated as stale/same-well artifacts, not
   hidden-test labels. Detailed evidence:
   [2026-07-31 results](docs/RESULTS_2026-07-31.md).
-- Slots 2 through 5 completed without a displayed public score; Slot 1 was
-  still pending at the final checkpoint. Do not resubmit any D31 ref or submit
-  a later Code version.
+- Slots 2 through 5 completed without a displayed public score. The exact
+  Blacklions reproduction scored `6.507`, not the page-reported `6.390`, and
+  did not beat the D29 `6.455` record. Do not resubmit any D31 ref or submit a
+  later Code version.
 
 ## Current experiment status (2026-07-23)
 
