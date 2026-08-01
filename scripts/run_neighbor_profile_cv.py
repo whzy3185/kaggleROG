@@ -112,13 +112,15 @@ def _candidate_donors(
     *,
     prefilter: int,
     direction_cosine: float,
+    forbidden_indices: set[int] | None = None,
 ) -> list[tuple[int, float]]:
     target = profiles[target_index]
+    forbidden_indices = forbidden_indices or set()
     centroid_distance = np.linalg.norm(centroids - target.centroid, axis=1)
     order = np.argsort(centroid_distance)
     candidates: list[tuple[int, float]] = []
     for donor_index in order:
-        if donor_index == target_index:
+        if donor_index == target_index or int(donor_index) in forbidden_indices:
             continue
         donor = profiles[int(donor_index)]
         cosine = float(np.dot(target.direction, donor.direction))
@@ -128,6 +130,27 @@ def _candidate_donors(
         if len(candidates) >= prefilter:
             break
     return sorted(candidates, key=lambda item: item[1])
+
+
+def _spatial_fields(centroids: np.ndarray, *, count: int, seed: int) -> np.ndarray:
+    """Create deterministic spatial blocks for a stricter donor audit."""
+
+    if count < 2 or count > len(centroids):
+        raise ValueError("field count must be between two and the number of wells")
+    scaled = (centroids - centroids.mean(axis=0)) / (centroids.std(axis=0) + 1e-12)
+    rng = np.random.default_rng(seed)
+    centers = scaled[rng.choice(len(scaled), size=count, replace=False)].copy()
+    labels = np.full(len(scaled), -1, dtype=int)
+    for _ in range(100):
+        updated = ((scaled[:, None, :] - centers[None, :, :]) ** 2).sum(axis=2).argmin(axis=1)
+        if np.array_equal(updated, labels):
+            break
+        labels = updated
+        for field in range(count):
+            members = scaled[labels == field]
+            if len(members):
+                centers[field] = members.mean(axis=0)
+    return labels
 
 
 def _blend_donor_shape(
@@ -152,6 +175,9 @@ def evaluate(
     prefilter: int,
     direction_cosine: float,
     limit: int | None,
+    exclude_target_field: bool = False,
+    field_count: int = 5,
+    field_seed: int = 0,
 ) -> tuple[pd.DataFrame, dict[str, dict[str, float | int]]]:
     paths = sorted(train_dir.glob("*__horizontal_well.csv"))
     if limit is not None:
@@ -168,18 +194,27 @@ def evaluate(
         raise RuntimeError("neighbor CV requires at least two usable wells")
 
     centroids = np.stack([profile.centroid for profile in profiles])
+    effective_field_count = min(field_count, len(profiles))
+    fields = _spatial_fields(centroids, count=effective_field_count, seed=field_seed)
     rows: list[dict[str, float | int | str]] = []
     for target_index, target in enumerate(profiles):
+        forbidden = (
+            set(np.flatnonzero(fields == fields[target_index]).tolist())
+            if exclude_target_field
+            else set()
+        )
         candidates = _candidate_donors(
             target_index,
             profiles,
             centroids,
             prefilter=prefilter,
             direction_cosine=direction_cosine,
+            forbidden_indices=forbidden,
         )
         anchor_prediction = np.full_like(target.eval_truth, target.anchor_tvt)
         nearest_distance = candidates[0][1] if candidates else math.inf
         nearest_id = profiles[candidates[0][0]].well_id if candidates else ""
+        nearest_field = int(fields[candidates[0][0]]) if candidates else -1
 
         for threshold in thresholds:
             selected = [
@@ -198,10 +233,13 @@ def evaluate(
                 rows.append(
                     {
                         "well_id": target.well_id,
+                        "target_field": int(fields[target_index]),
+                        "exclude_target_field": bool(exclude_target_field),
                         "threshold": float(threshold),
                         "blend": float(blend),
                         "n_donors": len(selected),
                         "nearest_well": nearest_id,
+                        "nearest_field": nearest_field,
                         "nearest_path_distance": float(nearest_distance),
                         "n_eval": len(error),
                         "rmse": math.sqrt(sse / len(error)),
@@ -218,6 +256,11 @@ def evaluate(
         key = f"distance_{threshold:g}/blend_{blend:g}"
         moved = group["n_donors"] > 0
         summary[key] = {
+            "validation_scope": (
+                f"leave-one-{effective_field_count}-way-spatial-field-out"
+                if exclude_target_field
+                else "leave-one-well-out"
+            ),
             "wells": int(len(group)),
             "moved_wells": int(moved.sum()),
             "coverage": float(moved.mean()),
@@ -249,6 +292,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-donors", type=int, default=3)
     parser.add_argument("--prefilter", type=int, default=30)
     parser.add_argument("--direction-cosine", type=float, default=0.0)
+    parser.add_argument(
+        "--exclude-target-field",
+        action="store_true",
+        help="Exclude every donor in the target well's deterministic spatial field.",
+    )
+    parser.add_argument("--field-count", type=int, default=5)
+    parser.add_argument("--field-seed", type=int, default=0)
     parser.add_argument("--limit", type=int)
     return parser
 
@@ -263,6 +313,8 @@ def main() -> int:
         raise ValueError("prefilter must be at least max-donors")
     if not -1.0 <= args.direction_cosine <= 1.0:
         raise ValueError("direction cosine must be between -1 and one")
+    if args.field_count < 2:
+        raise ValueError("field-count must be at least two")
 
     detail, summary = evaluate(
         args.train_dir,
@@ -272,6 +324,9 @@ def main() -> int:
         prefilter=args.prefilter,
         direction_cosine=args.direction_cosine,
         limit=args.limit,
+        exclude_target_field=args.exclude_target_field,
+        field_count=args.field_count,
+        field_seed=args.field_seed,
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     detail.to_csv(args.output_dir / "neighbor_profile_detail.csv", index=False)

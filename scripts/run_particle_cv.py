@@ -48,6 +48,7 @@ def _evaluate_one(
         "anchor": anchor,
         "particle": particle,
         "blend50": 0.5 * anchor + 0.5 * particle,
+        "blend625": 0.375 * anchor + 0.625 * particle,
         "blend65": 0.35 * anchor + 0.65 * particle,
         "blend75": 0.25 * anchor + 0.75 * particle,
     }
@@ -78,7 +79,7 @@ def evaluate(
     paths = sorted(train_dir.glob("*__horizontal_well.csv"))
     if sample_size < len(paths):
         paths = sorted(np.random.default_rng(seed).choice(paths, size=sample_size, replace=False))
-    names = ("anchor", "particle", "blend50", "blend65", "blend75")
+    names = ("anchor", "particle", "blend50", "blend625", "blend65", "blend75")
     started = time.perf_counter()
     tasks = [
         delayed(_evaluate_one)(path, number=number, seed=seed, config=config)
