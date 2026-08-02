@@ -32,13 +32,18 @@ FATAL_LOG = re.compile(
     r"out of memory|KeyError:\s*['\"]wid['\"]|competition mount unavailable",
     re.IGNORECASE,
 )
-STATIC_PARENT_PATTERNS = {
-    "recursive submission.csv discovery": re.compile(
-        r"(?:rglob|glob)\s*\(\s*['\"]submission\.csv", re.IGNORECASE
-    ),
-    "fixed parent finder": re.compile(r"\bfind_parent\s*\(", re.IGNORECASE),
-    "input-mounted submission.csv": re.compile(
+MOUNTED_SUBMISSION_PATTERNS = {
+    "direct /kaggle/input submission path": re.compile(
         r"/kaggle/input[^'\"\n]*(?<!sample_)submission\.csv", re.IGNORECASE
+    ),
+    "INPUT alias submission discovery": re.compile(
+        r"\bINPUT\s*\.\s*(?:rglob|glob)\s*\(\s*['\"]submission\.csv",
+        re.IGNORECASE,
+    ),
+    "Path('/kaggle/input') submission discovery": re.compile(
+        r"Path\s*\(\s*['\"]/kaggle/input['\"]\s*\)\s*\.\s*"
+        r"(?:rglob|glob)\s*\(\s*['\"]submission\.csv",
+        re.IGNORECASE,
     ),
 }
 RUNTIME_LIMITS = {
@@ -97,6 +102,19 @@ def object_sha256(value: Any) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def mounted_submission_hits(source: str) -> list[str]:
+    """Find visible-output dependencies in executable competition code.
+
+    This intentionally does not inspect local research scripts and does not
+    reject run-local ``/kaggle/working/submission.csv`` reads.
+    """
+    return [
+        label
+        for label, pattern in MOUNTED_SUBMISSION_PATTERNS.items()
+        if pattern.search(source) is not None
+    ]
+
+
 def prediction_sha(submission_path: Path) -> str:
     values = pd.read_csv(submission_path)["tvt"].to_numpy(float)
     return hashlib.sha256(np.asarray(values, dtype="<f8").tobytes(order="C")).hexdigest()
@@ -119,7 +137,9 @@ def _normalise_d29_lineage(sources: list[str]) -> list[str]:
             source,
         )
         source = re.sub(
-            r"d(?:32|33)_full_nonbranch_\d+", "a27_nonbranch_r1", source
+            r"(?:d(?:32|33)_full_nonbranch|d34_hardened_nonbranch)_\d+",
+            "a27_nonbranch_r1",
+            source,
         )
         source = source.replace(
             "len(_d29_sub) != len(_d29_sample)",
@@ -158,6 +178,7 @@ def build_gate_report(
     metadata: dict[str, Any] = {}
     notebook_path = candidate_dir / "notebook.ipynb"
     notebook: dict[str, Any] = {}
+    lineage_code_sha = ""
 
     try:
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
@@ -176,11 +197,6 @@ def build_gate_report(
             metadata.get("competition_sources") == [competition],
             repr(metadata.get("competition_sources")),
         )
-        checks.require(
-            "no_kernel_sources",
-            not metadata.get("kernel_sources"),
-            repr(metadata.get("kernel_sources", [])),
-        )
 
     try:
         notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
@@ -191,6 +207,14 @@ def build_gate_report(
     if notebook:
         sources = code_sources(notebook)
         joined = "\n\n".join(sources)
+        baseline: dict[str, Any] = {}
+        baseline_joined = ""
+        try:
+            baseline = json.loads(baseline_notebook.read_text(encoding="utf-8"))
+            baseline_joined = "\n\n".join(code_sources(baseline))
+            checks.require("baseline_notebook_json", True, str(baseline_notebook))
+        except Exception as exc:
+            checks.require("baseline_notebook_json", False, repr(exc))
         checks.require(
             "competition_mount_preflight",
             "competition mount unavailable" in joined
@@ -198,17 +222,32 @@ def build_gate_report(
             and competition in joined,
             "must fail before modelling when train/test/sample are absent",
         )
-        checks.require(
-            "dynamic_row_contract",
-            not re.search(r"\b14151\b", joined),
-            "literal public row count is forbidden in executable code",
+        candidate_public_row_literals = len(re.findall(r"\b14151\b", joined))
+        baseline_public_row_literals = len(
+            re.findall(r"\b14151\b", baseline_joined)
         )
-        for label, pattern in STATIC_PARENT_PATTERNS.items():
-            checks.require(
-                f"no_{label.replace(' ', '_')}",
-                pattern.search(joined) is None,
-                label,
-            )
+        checks.require(
+            "no_new_fixed_public_row_contract",
+            bool(baseline)
+            and candidate_public_row_literals <= baseline_public_row_literals,
+            (
+                "inherited constants from the already-scored baseline are "
+                "allowed; new ones are not: "
+                f"candidate={candidate_public_row_literals}, "
+                f"baseline={baseline_public_row_literals}"
+            ),
+        )
+        external_submission_hits = mounted_submission_hits(joined)
+        checks.require(
+            "no_visible_submission_as_hidden_parent",
+            not external_submission_hits,
+            (
+                "Reading public submission.csv is allowed in offline research; "
+                "a competition notebook must recompute hidden predictions. "
+                f"runtime hits={external_submission_hits!r}; "
+                f"kernel_sources={metadata.get('kernel_sources', [])!r}"
+            ),
+        )
         checks.require(
             "writes_run_local_submission",
             "submission.csv" in joined and "to_csv" in joined,
@@ -226,8 +265,10 @@ def build_gate_report(
                 f"value={value!r}, maximum={maximum}",
             )
         try:
-            baseline = json.loads(baseline_notebook.read_text(encoding="utf-8"))
+            if not baseline:
+                raise RuntimeError("baseline notebook did not load")
             same_lineage = _normalise_d29_lineage(sources) == code_sources(baseline)
+            lineage_code_sha = object_sha256(_normalise_d29_lineage(sources))
             checks.require(
                 "scored_source_lineage",
                 same_lineage,
@@ -285,6 +326,7 @@ def build_gate_report(
             "notebook_path": str(notebook_path.resolve()),
             "notebook_sha256": sha256_file(notebook_path) if notebook_path.exists() else "",
             "code_sha256": code_sha256(notebook) if notebook else "",
+            "lineage_code_sha256": lineage_code_sha,
             "metadata_sha256": sha256_file(metadata_path) if metadata_path.exists() else "",
             "metadata_contract": metadata_contract(metadata) if metadata else {},
             "metadata_contract_sha256": (

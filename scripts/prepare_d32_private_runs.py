@@ -320,7 +320,15 @@ print('D32 FINAL AUDIT', report)
     return {"route": name, "kernel": metadata["id"], "weight_pct": percent, "code_hash": code_hash(notebook)}
 
 
-def prepare_full_shape(name: str, slug: str, title: str, scale: float) -> dict:
+def prepare_full_shape(
+    name: str,
+    slug: str,
+    title: str,
+    scale: float,
+    *,
+    out_root: Path | None = None,
+    route_label: str | None = None,
+) -> dict:
     """Clone the scored D29 full source so hidden wells are rebuilt in-run."""
     percent = int(round(scale * 5))
     weight = percent / 100.0
@@ -334,7 +342,8 @@ def prepare_full_shape(name: str, slug: str, title: str, scale: float) -> dict:
         "        -0.18,\n        0.18,",
         f"        -{clip:.2f},\n        {clip:.2f},",
     )
-    replace_once(notebook, "a27_nonbranch_r1", f"d32_full_nonbranch_{percent}")
+    route_label = route_label or f"d32_full_nonbranch_{percent}"
+    replace_once(notebook, "a27_nonbranch_r1", route_label)
     replace_once(
         notebook,
         "len(_d29_sub) != 14151 or len(_d29_sample) != 14151",
@@ -393,7 +402,7 @@ def prepare_full_shape(name: str, slug: str, title: str, scale: float) -> dict:
         },
     )
     strip_runtime(notebook)
-    out_dir = OUT / f"full_{name}"
+    out_dir = (out_root or OUT) / f"full_{name}"
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "notebook.ipynb").write_text(
         json.dumps(notebook, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"

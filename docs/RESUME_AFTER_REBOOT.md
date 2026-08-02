@@ -14,9 +14,9 @@
   IDs and finite values, but that visible-output audit did not establish
   hidden-rerun compatibility. Roman and Tamerlan used private Version 2 only
   because an audit-only newline escaping bug was fixed before submission.
-- Slots 1, 2, and 3 remain pending. Slots 4 and 5 failed with Kaggle's
-  unhandled hidden-rerun error and produced no score. Poll only the first three
-  without resubmitting. Do not submit any
+- Slots 1, 2, and 3 scored `6.517 / 6.501 / 6.499`. Slots 4 and 5 failed with
+  Kaggle's unhandled hidden-rerun error and produced no score. D29 `6.455`
+  remains best. Do not resubmit any
   later Code version or create an automation. Detailed evidence:
   [2026-08-01 results](RESULTS_2026-08-01.md).
 - Do not use `competition_submit_code` directly. Every future candidate must
@@ -26,10 +26,10 @@
   ref. The wrapper fails closed on remote hash drift, unresolved submissions,
   same-day errors, less than 30 minutes of spacing, or exhausted budget.
 - The 10/15/20/25/30% non-branch outputs all completed and passed visible
-  output/log audits, including fresh 30% SHA `9995106a...8f0`, but none is
-  eligible: the hard gate quarantines the existing versions because their
-  inherited executable audit embeds the public row count. Rebuild a fresh
-  dynamic-contract private version before considering any future slot.
+  output/log audits, including fresh 30% SHA `9995106a...8f0`. The first hard
+  gate wrongly treated an inherited D29 row-count constant as equivalent to a
+  new visible-output dependency; this was corrected on 2026-08-02. Use fresh
+  hardened private versions and the corrected gate for future slots.
 
 ## Previous active checkpoint - 2026-07-31
 

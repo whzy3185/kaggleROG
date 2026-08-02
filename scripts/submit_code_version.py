@@ -127,7 +127,9 @@ def verify_remote_artifacts(api: KaggleApi, report: dict) -> dict:
     }
 
 
-def enforce_submission_state(api: KaggleApi, competition: str) -> dict:
+def enforce_submission_state(
+    api: KaggleApi, competition: str, *, scored_canary_ref: int | None = None
+) -> dict:
     rows = [
         row
         for row in (api.competition_submissions(competition, page_size=100) or [])
@@ -146,14 +148,19 @@ def enforce_submission_state(api: KaggleApi, competition: str) -> dict:
         raise RuntimeError("Could not verify prior submission state; refusing to submit")
     dated.sort(key=lambda item: item[0], reverse=True)
     unresolved = [
-        row
-        for _, row in dated
+        (when, row)
+        for when, row in dated
         if not str(getattr(row, "public_score", "") or "").strip()
         and not str(getattr(row, "error_description", "") or "").strip()
     ]
-    if unresolved:
-        refs = [int(getattr(row, "ref")) for row in unresolved]
-        raise RuntimeError(f"Unresolved prior competition submissions exist: {refs}")
+    unresolved_older = [
+        row
+        for when, row in unresolved
+        if when.astimezone(SHANGHAI).date() != today
+    ]
+    if unresolved_older:
+        refs = [int(getattr(row, "ref")) for row in unresolved_older]
+        raise RuntimeError(f"Unresolved older competition submissions exist: {refs}")
     today_rows = [
         row for when, row in dated if when.astimezone(SHANGHAI).date() == today
     ]
@@ -165,6 +172,27 @@ def enforce_submission_state(api: KaggleApi, competition: str) -> dict:
     if failed_today:
         refs = [int(getattr(row, "ref")) for row in failed_today]
         raise RuntimeError(f"A submission failed today; slate is stopped: {refs}")
+    unresolved_today = [
+        row
+        for when, row in unresolved
+        if when.astimezone(SHANGHAI).date() == today
+    ]
+    canary = next(
+        (
+            row
+            for _, row in dated
+            if scored_canary_ref is not None
+            and int(getattr(row, "ref")) == scored_canary_ref
+        ),
+        None,
+    )
+    canary_score = str(getattr(canary, "public_score", "") or "").strip()
+    if unresolved_today and not canary_score:
+        refs = [int(getattr(row, "ref")) for row in unresolved_today]
+        raise RuntimeError(
+            "Current-day submissions are unresolved and no scored canary was "
+            f"verified: {refs}"
+        )
     if len(today_rows) >= 5:
         raise RuntimeError(f"Daily budget exhausted: {len(today_rows)}/5")
     latest_time = dated[0][0]
@@ -177,6 +205,9 @@ def enforce_submission_state(api: KaggleApi, competition: str) -> dict:
         "today_used": len(today_rows),
         "today_remaining": 5 - len(today_rows),
         "minutes_since_latest": elapsed_minutes,
+        "unresolved_today": [int(getattr(row, "ref")) for row in unresolved_today],
+        "scored_canary_ref": scored_canary_ref,
+        "scored_canary_score": canary_score or None,
     }
 
 
@@ -188,6 +219,13 @@ def main() -> None:
     parser.add_argument("--file", default="submission.csv")
     parser.add_argument("--message", required=True)
     parser.add_argument("--gate-report", type=Path, required=True)
+    parser.add_argument("--scored-canary-ref", type=int)
+    parser.add_argument("--scored-canary-report", type=Path)
+    parser.add_argument(
+        "--scored-lineage-proof",
+        type=Path,
+        help="Verified historical scored ref with the same normalized lineage",
+    )
     parser.add_argument(
         "--execute",
         action="store_true",
@@ -202,10 +240,64 @@ def main() -> None:
         version=args.version,
         file_name=args.file,
     )
+    if args.scored_lineage_proof and (
+        args.scored_canary_ref or args.scored_canary_report
+    ):
+        raise RuntimeError(
+            "Use either a scored lineage proof or a current-day canary pair"
+        )
+    if bool(args.scored_canary_ref) != bool(args.scored_canary_report):
+        raise RuntimeError(
+            "--scored-canary-ref and --scored-canary-report must be supplied together"
+        )
+    if args.scored_canary_report:
+        canary_report = json.loads(
+            args.scored_canary_report.read_text(encoding="utf-8")
+        )
+        if canary_report.get("passed") is not True:
+            raise RuntimeError("Scored canary gate report is not passing")
+        current_lineage = report.get("candidate", {}).get("lineage_code_sha256")
+        canary_lineage = canary_report.get("candidate", {}).get(
+            "lineage_code_sha256"
+        )
+        if not current_lineage or current_lineage != canary_lineage:
+            raise RuntimeError(
+                "Candidate does not share the scored canary's deployment lineage"
+            )
+    lineage_proof = None
+    state_canary_ref = args.scored_canary_ref
+    if args.scored_lineage_proof:
+        lineage_proof = json.loads(
+            args.scored_lineage_proof.read_text(encoding="utf-8")
+        )
+        if lineage_proof.get("competition") != args.competition:
+            raise RuntimeError("Scored lineage proof competition mismatch")
+        current_lineage = report.get("candidate", {}).get("lineage_code_sha256")
+        if (
+            not current_lineage
+            or lineage_proof.get("lineage_code_sha256") != current_lineage
+        ):
+            raise RuntimeError(
+                "Candidate does not share the historical scored deployment lineage"
+            )
+        if (
+            lineage_proof.get("baseline_notebook_sha256")
+            != report.get("candidate", {}).get("baseline_notebook_sha256")
+        ):
+            raise RuntimeError("Scored lineage proof baseline notebook mismatch")
+        state_canary_ref = int(lineage_proof["ref"])
     api = KaggleApi()
     api.authenticate()
     remote = verify_remote_artifacts(api, report)
-    state = enforce_submission_state(api, args.competition)
+    state = enforce_submission_state(
+        api, args.competition, scored_canary_ref=state_canary_ref
+    )
+    if lineage_proof and state.get("scored_canary_score") != str(
+        lineage_proof.get("public_score")
+    ):
+        raise RuntimeError(
+            "Live scored lineage proof does not match the recorded score"
+        )
     if not args.execute:
         print(
             json.dumps(

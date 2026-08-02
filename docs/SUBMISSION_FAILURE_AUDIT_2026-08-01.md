@@ -63,11 +63,18 @@ The evidence levels are deliberately separated:
 `scripts/preflight_competition_submission.py` now rejects a candidate unless
 all of the following hold:
 
-1. it is a private, offline GPU Code version with the competition mounted and
-   no `kernel_sources`;
-2. it contains a pre-model competition-mount check and dynamically validates
-   the run-local sample instead of embedding the public `14,151` row count;
-3. it does not discover or read another notebook's `submission.csv`;
+1. it is a private, offline GPU Code version with the competition mounted;
+2. it contains a pre-model competition-mount check and validates the run-local
+   sample. A fixed contract inherited unchanged from a source lineage that has
+   already produced a real score is allowed; adding a new public-only row/ID
+   contract is not;
+3. it may read other notebooks and their `submission.csv` files during local
+   research, reproduction checks, scoring analysis, and candidate design. In
+   the submitted competition notebook, however, a visible public
+   `submission.csv` cannot be used as the hidden prediction parent: the
+   underlying method must be rerun dynamically. `kernel_sources` are allowed
+   when they provide reusable models or other hidden-data-independent
+   artifacts;
 4. expensive CV paths are disabled and the measured D29 runtime caps are not
    exceeded;
 5. its executable cells match the scored D29 lineage after only the declared
@@ -81,11 +88,11 @@ requires byte-identical hashes, refuses while any earlier ref is unresolved,
 stops the day after any failed ref, enforces the five-ref budget and a minimum
 30-minute interval, and defaults to a dry run unless `--execute` is explicit.
 
-The already completed 25% and 30% recovery versions are quarantined: their
-visible outputs are valid, but their inherited executable audit still embeds
-the public row count. The new gate correctly returns `passed=false`; neither
-version is eligible for competition submission. A future candidate must first
-run as a fresh hardened private version and pass the new gate.
+The initial gate incorrectly quarantined the completed 25% and 30% versions
+solely because they inherited a row-count constant from the already-scored D29
+source. That was too broad and was corrected on 2026-08-02. The real boundary
+is whether a new visible-only contract or a visible parent output is introduced.
+A fresh hardened private version must still pass the corrected gate.
 
 ## Mandatory rule from now on
 
@@ -94,7 +101,8 @@ run as a fresh hardened private version and pass the new gate.
 2. Never call a ref successful because the source Code version is complete.
 3. Never call `COMPLETE` successful when `errorDescription` is non-empty or
    `publicScore` is empty.
-4. Do not competition-submit a notebook that consumes a fixed public
+4. Reading public outputs for research is allowed and expected. Do not
+   competition-submit a notebook that consumes a fixed public
    `submission.csv`, fixed public IDs, fixed public row count, or public-output
    SHA as its hidden-run parent.
 5. Full-source notebooks must discover hidden wells dynamically and validate

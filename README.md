@@ -2,9 +2,9 @@
 
 ## Current experiment status (2026-08-01)
 
-- D32 consumed exactly `5 / 5`, but it is not a completed scoring slate.
-  GeoAnchor ref `55159859`, Roman Smartest ref `55160477`, and Tamerlan DET
-  AGI ref `55161022` are still pending. Four-way arithmetic consensus ref
+- D32 consumed exactly `5 / 5`. GeoAnchor ref `55159859`, Roman Smartest ref
+  `55160477`, and Tamerlan DET AGI ref `55161022` scored
+  `6.517 / 6.501 / 6.499`; none beat D29 `6.455`. Four-way arithmetic consensus ref
   `55161568` and robust middle-pair consensus ref `55162186` both failed with
   an unhandled error during Kaggle's hidden-data rerun.
 - Every private output passed the 14,151 ordered unique-ID, finite-value,
@@ -18,14 +18,30 @@
   The decisive fields are `publicScore` and `errorDescription`; the previous
   status-only audit missed 13 historical failures. See the
   [submission failure audit](docs/SUBMISSION_FAILURE_AUDIT_2026-08-01.md).
-- Competition submission is now fail-closed. The preflight rejects fixed
-  public row counts, parent `submission.csv` inputs, unbounded runtime changes,
+- Competition submission is now fail-closed. Public notebooks and their
+  outputs remain valid research inputs. The preflight rejects only using a
+  fixed visible `submission.csv` as the hidden prediction parent, plus any new
+  public-only row/ID contract beyond a genuinely scored source lineage,
+  unbounded runtime changes,
   source-lineage drift, output/audit hash mismatches, and fatal logs. The
   submission wrapper then rechecks the exact remote source and output, blocks
   unresolved refs or any same-day failure, enforces 30-minute spacing and the
-  daily budget, and requires explicit execution. The audited 25/30% recovery
-  outputs remain quarantined because they do not pass this new gate.
+  daily budget, and requires explicit execution. A first overly broad version
+  of the gate rejected inherited D29 constants; this was corrected on
+  2026-08-02 before any new competition ref was created.
 - Detailed evidence: [2026-08-01 results](docs/RESULTS_2026-08-01.md).
+
+## Current experiment status (2026-08-02)
+
+- Today's pre-registered full-source response curve is D29 non-branch weight
+  `10 / 15 / 20 / 25 / 30%`. Every variant recomputes predictions from the
+  competition data; public submissions are read for research but are not used
+  as hidden runtime parents.
+- The first successful scored candidate is the deployment canary. Later
+  weights must share its normalized executable lineage, pass independent
+  source/output/hash/log gates, remain at least 30 minutes apart, and stop the
+  slate immediately if Kaggle reports an error.
+- Detailed evidence: [2026-08-02 results](docs/RESULTS_2026-08-02.md).
 
 ## Current experiment status (2026-07-31)
 

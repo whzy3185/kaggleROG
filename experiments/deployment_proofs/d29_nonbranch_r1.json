@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "competition": "rogii-wellbore-geology-prediction",
+  "ref": 55074584,
+  "public_score": "6.455",
+  "kernel": "muelsyse111/rogii-d29-a27-nonbranch-shape-r1",
+  "kernel_version": 1,
+  "baseline_notebook_sha256": "b17f3b76838ce6bc2ef66dc7b15b5e9db1c58ead4ccf54979ba7b5a29ecb4242",
+  "lineage_code_sha256": "325f1d0201ca0a42361509fb8be4ce57a889eccf0bafec3ee0120fef8a2cf145",
+  "submission_sha256": "51d31770acfd657d27ad5b4ad07968ce05f2ae3c784f0faa47b74d682d1405eb",
+  "note": "Real scored deployment proof for the normalized D34 non-branch family."
+}
