@@ -1,6 +1,30 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-08-01
+## Latest active checkpoint - 2026-08-02
+
+- D34 is final at exactly `5 / 5`: refs
+  `55176648 / 55177095 / 55177643 / 55178232 / 55178688` are the hardened
+  D29-lineage non-branch response curve at `15 / 10 / 20 / 25 / 30%`.
+- Kaggle UTC times are
+  `03:40:51.810 / 04:11:34.507 / 04:42:59.720 / 05:14:22.713 /
+  05:45:49.253`; gaps are
+  `30:42.697 / 31:25.213 / 31:22.993 / 31:26.540`.
+- Every candidate completed in its exact remote private Version 1 and passed
+  remote source, metadata, output, sample-order, finite-value, log, lineage,
+  and pairwise-nonduplicate gates. File SHA prefixes in weight order
+  `10 / 15 / 20 / 25 / 30%` are
+  `23d7a931 / 2a870015 / 398e46cb / ba527b45 / 3a258c59`.
+- At the final live check all five refs were `PENDING`, with empty score and
+  error fields. Do not describe them as successful until `publicScore` is
+  non-empty and `errorDescription` remains empty. Do not resubmit any D34 ref
+  or submit a later documentation version. Detailed evidence:
+  [2026-08-02 results](RESULTS_2026-08-02.md).
+- The corrected gate allows reading public submissions for local research and
+  provenance. It forbids only using a mounted visible `submission.csv` as the
+  hidden runtime parent, and requires exact scored-lineage and remote-version
+  evidence before a competition ref can be created.
+
+## Previous active checkpoint - 2026-08-01
 
 - D32 is final at exactly `5 / 5`: refs
   `55159859 / 55160477 / 55161022 / 55161568 / 55162186` are exact private

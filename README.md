@@ -41,6 +41,16 @@
   weights must share its normalized executable lineage, pass independent
   source/output/hash/log gates, remain at least 30 minutes apart, and stop the
   slate immediately if Kaggle reports an error.
+- D34 is final at exactly `5 / 5`: refs
+  `55176648 / 55177095 / 55177643 / 55178232 / 55178688` correspond to
+  `15 / 10 / 20 / 25 / 30%`. Kaggle UTC timestamps are
+  `03:40:51.810 / 04:11:34.507 / 04:42:59.720 / 05:14:22.713 /
+  05:45:49.253`; adjacent gaps are
+  `30:42.697 / 31:25.213 / 31:22.993 / 31:26.540`.
+- All five exact remote private versions passed source, metadata, output,
+  sample-order, finite-value, log, lineage, and nonduplicate gates immediately
+  before submission. All five refs are currently pending without a score or
+  error; this is not yet recorded as a successful competition result.
 - Detailed evidence: [2026-08-02 results](docs/RESULTS_2026-08-02.md).
 
 ## Current experiment status (2026-07-31)
