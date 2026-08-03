@@ -8,7 +8,10 @@ import pytest
 from scripts.preflight_competition_submission import (
     _normalise_d29_lineage,
     mounted_submission_hits,
+    prediction_sha,
+    sha256_file,
 )
+from scripts.preflight_d35_exact_upstream import build_report as build_d35_report
 from scripts.submit_code_version import enforce_submission_state, load_gate_report
 
 
@@ -127,3 +130,96 @@ def test_historical_scored_lineage_allows_today_pending_after_spacing():
     state = enforce_submission_state(api, "comp", scored_canary_ref=1)
     assert state["unresolved_today"] == [2]
     assert state["scored_canary_ref"] == 1
+
+
+def test_d35_exact_upstream_gate_accepts_only_appended_dynamic_audit(tmp_path):
+    upstream = tmp_path / "upstream"
+    candidate = tmp_path / "candidate"
+    output = tmp_path / "output"
+    upstream.mkdir()
+    candidate.mkdir()
+    output.mkdir()
+    upstream_meta = {
+        "id": "author/source",
+        "code_file": "source.ipynb",
+        "enable_gpu": False,
+        "enable_tpu": False,
+        "enable_internet": False,
+        "dataset_sources": ["author/artifacts"],
+        "kernel_sources": [],
+        "competition_sources": ["rogii-wellbore-geology-prediction"],
+        "model_sources": [],
+    }
+    candidate_meta = {
+        **upstream_meta,
+        "id": "owner/private",
+        "code_file": "notebook.ipynb",
+        "is_private": True,
+    }
+    model_code = "print('model')\n"
+    audit_code = (
+        "# D35 dynamic hidden-run output contract (read-only).\n"
+        "competition='rogii-wellbore-geology-prediction'\n"
+        "if len(_d35_sub) != len(_d35_sample): pass\n"
+        "assert _d35_sub['id'].equals(_d35_sample['id'])\n"
+    )
+
+    def notebook(sources):
+        return {
+            "cells": [
+                {"cell_type": "code", "source": source, "outputs": [], "execution_count": None}
+                for source in sources
+            ],
+            "metadata": {},
+            "nbformat": 4,
+            "nbformat_minor": 5,
+        }
+
+    (upstream / "kernel-metadata.json").write_text(json.dumps(upstream_meta), encoding="utf-8")
+    (candidate / "kernel-metadata.json").write_text(json.dumps(candidate_meta), encoding="utf-8")
+    (upstream / "source.ipynb").write_text(json.dumps(notebook([model_code])), encoding="utf-8")
+    (candidate / "notebook.ipynb").write_text(
+        json.dumps(notebook([model_code, audit_code])), encoding="utf-8"
+    )
+    sample = tmp_path / "sample_submission.csv"
+    sample.write_text("id,tvt\na_0,0\na_1,0\n", encoding="utf-8")
+    submission = output / "submission.csv"
+    submission.write_text("id,tvt\na_0,1.5\na_1,2.5\n", encoding="utf-8")
+    (output / "d35_final_audit.json").write_text(
+        json.dumps(
+            {
+                "submission_sha256": sha256_file(submission),
+                "prediction_sha256": prediction_sha(submission),
+                "ordered_unique_ids": True,
+                "finite_tvt": True,
+                "rows": 2,
+            }
+        ),
+        encoding="utf-8",
+    )
+    (output / "run.log").write_text("completed\n", encoding="utf-8")
+    report = build_d35_report(
+        candidate_dir=candidate,
+        upstream_dir=upstream,
+        output_dir=output,
+        sample=sample,
+        kernel="owner/private",
+        version=1,
+        competition="rogii-wellbore-geology-prediction",
+    )
+    assert report["passed"] is True
+    assert report["candidate"]["lineage_mode"] == "exact_upstream"
+
+    changed = notebook([model_code + "print('changed')\n", audit_code])
+    (candidate / "notebook.ipynb").write_text(json.dumps(changed), encoding="utf-8")
+    report = build_d35_report(
+        candidate_dir=candidate,
+        upstream_dir=upstream,
+        output_dir=output,
+        sample=sample,
+        kernel="owner/private",
+        version=1,
+        competition="rogii-wellbore-geology-prediction",
+    )
+    failed = {row["name"]: row["status"] for row in report["checks"]}
+    assert failed["exact_upstream_modelling_code"] == "fail"

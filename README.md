@@ -49,8 +49,9 @@
   `30:42.697 / 31:25.213 / 31:22.993 / 31:26.540`.
 - All five exact remote private versions passed source, metadata, output,
   sample-order, finite-value, log, lineage, and nonduplicate gates immediately
-  before submission. All five refs are currently pending without a score or
-  error; this is not yet recorded as a successful competition result.
+  before submission. The final `10 / 15 / 20 / 25 / 30%` scores are
+  `6.495 / 6.532 / 6.473 / 6.535 / 6.467`. Every ref completed without an
+  error; 30% was the best D34 response but did not beat D29 `6.455`.
 - Detailed evidence: [2026-08-02 results](docs/RESULTS_2026-08-02.md).
 
 ## Current experiment status (2026-07-31)
