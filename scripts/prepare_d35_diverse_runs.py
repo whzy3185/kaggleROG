@@ -41,18 +41,18 @@ SPECS = (
         "ROGII D35 Frontier Blend Full Source",
     ),
     (
-        "gbdt_gate",
-        "well-level-gbdt-gate",
-        "blacklions/well-level-gbdt-gate",
-        "rogii-d35-gbdt-gate-full-source",
-        "ROGII D35 GBDT Gate Full Source",
+        "physics_v2",
+        "rogii-physics-informed-stacked-ensemble-v2",
+        "raunakdey07/rogii-physics-informed-stacked-ensemble-v2",
+        "rogii-d35-physics-v2-full-source",
+        "ROGII D35 Physics V2 Full Source",
     ),
     (
-        "contact_gated",
-        "rogii-contact-gated-stratigraphic-alignment",
-        "blacklions/rogii-contact-gated-stratigraphic-alignment",
-        "rogii-d35-contact-gated-full-source",
-        "ROGII D35 Contact Gated Full Source",
+        "shift275",
+        "rogii-shift-275",
+        "zhexinjiang/rogii-shift-275",
+        "rogii-d35-shift-275-full-source",
+        "ROGII D35 Shift 275 Full Source",
     ),
 )
 

@@ -12,7 +12,11 @@ from scripts.preflight_competition_submission import (
     sha256_file,
 )
 from scripts.preflight_d35_exact_upstream import build_report as build_d35_report
-from scripts.submit_code_version import enforce_submission_state, load_gate_report
+from scripts.submit_code_version import (
+    enforce_submission_state,
+    load_gate_report,
+    validate_scored_canary_report,
+)
 
 
 def test_lineage_normalizer_removes_only_declared_deployment_edits():
@@ -90,6 +94,41 @@ def test_submit_wrapper_rejects_version_mismatch(tmp_path):
             kernel="owner/slug",
             version=3,
             file_name="submission.csv",
+        )
+
+
+def test_diverse_canary_exception_is_exact_upstream_and_same_competition_only():
+    current = {
+        "passed": True,
+        "competition": "comp",
+        "candidate": {
+            "lineage_code_sha256": "a" * 64,
+            "lineage_mode": "exact_upstream",
+        },
+    }
+    canary = {
+        "passed": True,
+        "competition": "comp",
+        "candidate": {
+            "lineage_code_sha256": "b" * 64,
+            "lineage_mode": "exact_upstream",
+        },
+    }
+    with pytest.raises(RuntimeError, match="does not share"):
+        validate_scored_canary_report(current, canary)
+    validate_scored_canary_report(
+        current, canary, allow_diverse_exact_upstream=True
+    )
+    canary["candidate"]["lineage_mode"] = "normalized_local"
+    with pytest.raises(RuntimeError, match="two exact-upstream"):
+        validate_scored_canary_report(
+            current, canary, allow_diverse_exact_upstream=True
+        )
+    canary["candidate"]["lineage_mode"] = "exact_upstream"
+    canary["competition"] = "other"
+    with pytest.raises(RuntimeError, match="competition mismatch"):
+        validate_scored_canary_report(
+            current, canary, allow_diverse_exact_upstream=True
         )
 
 

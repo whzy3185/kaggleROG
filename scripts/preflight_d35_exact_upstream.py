@@ -8,19 +8,34 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scripts.preflight_competition_submission import (
-    Checks,
-    COMPETITION,
-    FATAL_LOG,
-    code_sha256,
-    code_sources,
-    metadata_contract,
-    mounted_submission_hits,
-    object_sha256,
-    prediction_sha,
-    sha256_file,
-)
-from scripts.verify_submission import validate_submission
+try:
+    from scripts.preflight_competition_submission import (
+        Checks,
+        COMPETITION,
+        FATAL_LOG,
+        code_sha256,
+        code_sources,
+        metadata_contract,
+        mounted_submission_hits,
+        object_sha256,
+        prediction_sha,
+        sha256_file,
+    )
+    from scripts.verify_submission import validate_submission
+except ModuleNotFoundError:  # Direct ``python scripts/...`` execution.
+    from preflight_competition_submission import (
+        Checks,
+        COMPETITION,
+        FATAL_LOG,
+        code_sha256,
+        code_sources,
+        metadata_contract,
+        mounted_submission_hits,
+        object_sha256,
+        prediction_sha,
+        sha256_file,
+    )
+    from verify_submission import validate_submission
 
 
 AUDIT_PREFIX = "# D35 dynamic hidden-run output contract (read-only)."

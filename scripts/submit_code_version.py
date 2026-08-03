@@ -65,6 +65,41 @@ def load_gate_report(
     return report
 
 
+def validate_scored_canary_report(
+    report: dict, canary_report: dict, *, allow_diverse_exact_upstream: bool = False
+) -> None:
+    """Require one audited deployment lineage unless diversity is explicit.
+
+    The diversity exception is deliberately narrow: both reports must be
+    passing exact-upstream reproductions for the same competition.  It does
+    not waive the live score, remote-artifact, output, failure, budget, or
+    spacing checks.
+    """
+    if canary_report.get("passed") is not True:
+        raise RuntimeError("Scored canary gate report is not passing")
+    if canary_report.get("competition") != report.get("competition"):
+        raise RuntimeError("Scored canary competition mismatch")
+    current_lineage = report.get("candidate", {}).get("lineage_code_sha256")
+    canary_lineage = canary_report.get("candidate", {}).get(
+        "lineage_code_sha256"
+    )
+    if current_lineage and current_lineage == canary_lineage:
+        return
+    if allow_diverse_exact_upstream:
+        modes = {
+            report.get("candidate", {}).get("lineage_mode"),
+            canary_report.get("candidate", {}).get("lineage_mode"),
+        }
+        if modes == {"exact_upstream"}:
+            return
+        raise RuntimeError(
+            "Diverse-lineage exception requires two exact-upstream gate reports"
+        )
+    raise RuntimeError(
+        "Candidate does not share the scored canary's deployment lineage"
+    )
+
+
 def verify_remote_artifacts(api: KaggleApi, report: dict) -> dict:
     kernel = report["kernel"]
     version = int(report["kernel_version"])
@@ -222,6 +257,14 @@ def main() -> None:
     parser.add_argument("--scored-canary-ref", type=int)
     parser.add_argument("--scored-canary-report", type=Path)
     parser.add_argument(
+        "--allow-diverse-exact-upstream",
+        action="store_true",
+        help=(
+            "Allow a different scored-canary lineage only when both passing "
+            "reports are exact, same-competition upstream reproductions"
+        ),
+    )
+    parser.add_argument(
         "--scored-lineage-proof",
         type=Path,
         help="Verified historical scored ref with the same normalized lineage",
@@ -250,20 +293,19 @@ def main() -> None:
         raise RuntimeError(
             "--scored-canary-ref and --scored-canary-report must be supplied together"
         )
+    if args.allow_diverse_exact_upstream and not args.scored_canary_report:
+        raise RuntimeError(
+            "--allow-diverse-exact-upstream requires a scored canary pair"
+        )
     if args.scored_canary_report:
         canary_report = json.loads(
             args.scored_canary_report.read_text(encoding="utf-8")
         )
-        if canary_report.get("passed") is not True:
-            raise RuntimeError("Scored canary gate report is not passing")
-        current_lineage = report.get("candidate", {}).get("lineage_code_sha256")
-        canary_lineage = canary_report.get("candidate", {}).get(
-            "lineage_code_sha256"
+        validate_scored_canary_report(
+            report,
+            canary_report,
+            allow_diverse_exact_upstream=args.allow_diverse_exact_upstream,
         )
-        if not current_lineage or current_lineage != canary_lineage:
-            raise RuntimeError(
-                "Candidate does not share the scored canary's deployment lineage"
-            )
     lineage_proof = None
     state_canary_ref = args.scored_canary_ref
     if args.scored_lineage_proof:
