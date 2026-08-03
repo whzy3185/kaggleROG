@@ -41,11 +41,11 @@ SPECS = (
         "ROGII D35 Frontier Blend Full Source",
     ),
     (
-        "physics_v2",
-        "rogii-physics-informed-stacked-ensemble-v2",
-        "raunakdey07/rogii-physics-informed-stacked-ensemble-v2",
-        "rogii-d35-physics-v2-full-source",
-        "ROGII D35 Physics V2 Full Source",
+        "final_hierarchy",
+        "rogii-final-hierarchy",
+        "blacklions/rogii-wellbore-geology-prediction-final-hierarch",
+        "rogii-d35-final-hierarchy-full-source",
+        "ROGII D35 Final Hierarchy Full Source",
     ),
     (
         "shift275",
