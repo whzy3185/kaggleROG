@@ -23,9 +23,11 @@
   projection approached the nine-hour hidden rerun limit, so it was not
   competition-submitted; audited Shift275 was used as the deployment-safe
   fallback for slot 5.
-- The current Code leader Physics v48 is not resubmitted because its artifact
-  is a duplicate of a previously audited/measured route.  Public outputs are
-  research inputs only, never hidden prediction parents.  Detailed evidence:
+- Physics v48 appeared first in the CLI `scoreAscending` response, but that
+  response exposes no score field and does not prove it has the best public
+  score. It was not resubmitted because its artifact is a duplicate of a
+  previously audited/measured route. Public outputs are research inputs only,
+  never hidden prediction parents. Detailed evidence:
   [2026-08-04 results](docs/RESULTS_2026-08-04.md).
 
 ## Current experiment status (2026-08-01)

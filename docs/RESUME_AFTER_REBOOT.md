@@ -10,7 +10,9 @@
   `30:37.120 / 30:36.200 / 66:02.390 / 30:51.513`; all five refs are pending
   with no error marker. Do not resubmit any of them and never create a sixth
   2026-08-04 submission.
-- The refreshed Code list adds no safe new champion. Physics v48 is a known
+- The refreshed Code list adds no verifiable safe new champion. Physics v48
+  appears first in the CLI `scoreAscending` response, but that response has no
+  score field and does not prove it has the best public score. It is a known
   duplicate route, while recent extreme, duplicate, weak, or mounted-output
   candidates remain rejected. Latest Discussion emphasizes that the public
   26% / roughly 50 wells are noisy, that single folds can swing widely, and
