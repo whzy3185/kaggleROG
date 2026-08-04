@@ -1,6 +1,31 @@
 # Resume checkpoint — 2026-07-17
 
-## Latest active checkpoint - 2026-08-02
+## Latest active checkpoint - 2026-08-04
+
+- D36 is final at exactly `5 / 5`: Raunak Stack ref `55225251`, Final Hierarchy
+  ref `55225757`, AkiiroLabs ref `55226347`, and Frontier Blend ref `55227570`
+  plus Shift275 ref `55228301` at
+  `01:01:16.617 / 01:31:53.737 / 02:02:29.937 / 03:08:32.327 /
+  03:39:23.840 UTC`. The gaps are
+  `30:37.120 / 30:36.200 / 66:02.390 / 30:51.513`; all five refs are pending
+  with no error marker. Do not resubmit any of them and never create a sixth
+  2026-08-04 submission.
+- The refreshed Code list adds no safe new champion. Physics v48 is a known
+  duplicate route, while recent extreme, duplicate, weak, or mounted-output
+  candidates remain rejected. Latest Discussion emphasizes that the public
+  26% / roughly 50 wells are noisy, that single folds can swing widely, and
+  that diverse robust ensembles and honest validation are preferable final
+  insurance.
+- AkiiroLabs private Version 1 is complete and passed exact source/metadata,
+  dynamic official sample order, finite value, output SHA, no-public-output-
+  parent, and clean-log checks. Gate:
+  `artifacts/d36_submission_gates/akiiro.json`; output SHA prefix `2ebc6881`.
+- Harshini remained running for more than two hours and its 26%-to-full-test
+  runtime projection approached the nine-hour limit. It was not submitted;
+  the already audited Shift275 private Version 1 was the safe final fallback.
+  Harshini may finish as research only and must not be submitted today.
+
+## Previous active checkpoint - 2026-08-02
 
 - D34 is final at exactly `5 / 5`: refs
   `55176648 / 55177095 / 55177643 / 55178232 / 55178688` are the hardened

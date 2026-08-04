@@ -1,5 +1,33 @@
 # Kaggle ROGII Wellbore Geology Prediction
 
+## Current experiment status (2026-08-04)
+
+- D36 is a generalization-first five-route slate informed by the latest Code
+  and Discussion refresh.  The public leaderboard covers about 26% / roughly
+  50 wells and can be noisy; current competitors recommend validation trust,
+  whole-model diversity, and a robust ensemble insurance route rather than a
+  single public-score or single-fold bet.
+- D36 is final at exactly `5 / 5`. Slots 1 through 5 are Raunak Stack ref
+  `55225251`, Final Hierarchy ref `55225757`, AkiiroLabs ref `55226347`,
+  Frontier Blend ref `55227570`, and Shift275 ref `55228301`.
+- The five UTC timestamps are `01:01:16.617 / 01:31:53.737 / 02:02:29.937 /
+  03:08:32.327 / 03:39:23.840`; gaps are
+  `30:37.120 / 30:36.200 / 66:02.390 / 30:51.513`. Every ref is pending
+  without an error marker; do not resubmit any ref or report a score until
+  Kaggle supplies one.
+- AkiiroLabs full source passed the dynamic sample-order, finite-value,
+  source/metadata/output SHA, no-mounted-submission-parent, and clean-log
+  gates. Frontier Blend and Shift275 passed the same deployment gates before
+  their refs were created.
+- Harshini remained running beyond two hours. Its 26%-to-full-test runtime
+  projection approached the nine-hour hidden rerun limit, so it was not
+  competition-submitted; audited Shift275 was used as the deployment-safe
+  fallback for slot 5.
+- The current Code leader Physics v48 is not resubmitted because its artifact
+  is a duplicate of a previously audited/measured route.  Public outputs are
+  research inputs only, never hidden prediction parents.  Detailed evidence:
+  [2026-08-04 results](docs/RESULTS_2026-08-04.md).
+
 ## Current experiment status (2026-08-01)
 
 - D32 consumed exactly `5 / 5`. GeoAnchor ref `55159859`, Roman Smartest ref
